@@ -10,9 +10,14 @@
   <body>
     <h1 class="a11y-hidden">자두캘린더</h1>
     <nav class="navigation">
-      <h2 class="nav-current">2021. 07.</h2>
+      <h2 class="nav-current">
+        <span class="nav-year">2021</span>
+        <span class="a11y-hidden">년</span>
+        <span class="nav-month">07</span>
+        <span class="a11y-hidden">월</span>
+      </h2>
       <div class="nav-move">
-        <button id="dropdownCalendarLabel" class="move-calendar-btn">
+        <button id="dropdownCalendarLabel" class="round-btn move-calendar-btn">
           년월선택
         </button>
         <div class="dropdown dropdown-calendar">
@@ -61,7 +66,7 @@
             </ul>
           </div>
         </div>
-        <button class="move-today-btn">오늘</button>
+        <button class="round-btn move-today-btn">오늘</button>
       </div>
       <div class="dropdown dropdown-category">
         <span id="dropdownCategoryLabel" class="a11y-hidden"
@@ -107,108 +112,197 @@
         <div class="calendar-day">sun</div>
       </div>
       <div class="calendar-dates">
-        <div class="calendar-date">
-          <span class="calendar-date-txt">30</span>
-          <button class="item-add-btn" aria-label="6월 30일 월요일 아이템추가">
-            <span class="icon icon-add"></span>
+      </div>
+    </main>
+    <form class="modal modal-add">
+      <fieldset>
+        <legend class="modal-title">
+          <span class="month">10</span>월 <span class="date">30</span>일 아이템
+          추가 <span class="a11y-hidden">폼</span>
+        </legend>
+        <input type="hidden" name="itemDate" class="modal-input-date" />
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownCategoryLabel2" class="modal-input-label"
+            >카테고리 <span class="a11y-hidden">선택</span></span
+          >
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            name="itemCategory"
+            value="todolist"
+            class="dropdown-toggle"
+            aria-labelledby="dropdownCategoryLabel2 dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✔ TODO
           </button>
-          <ul class="items">
-            <li class="item item-todo">
-              <input
-                class="item-todo-chkbox"
-                type="checkbox"
-                id="item-210630-001"
-              />
-              <span class="item-todo-chkicon"></span>
-              <label class="item-todo-txt" for="item-210630-001">
-                todo리스트 내용 가나다라마바사 아자차카타ㅠㅏ하 내용
-              </label>
-              <div class="item-util">
-                <button class="item-edit-btn" aria-label="아이템편집">
-                  <span class="icon icon-edit"></span>
-                </button>
-                <button class="item-delete-btn" aria-label="아이템삭제">
-                  <span class="icon icon-delete"></span>
-                </button>
-              </div>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownCategoryLabel2"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">✔ TODO</button>
             </li>
-            <li class="item item-todo">
-              <input
-                class="item-todo-chkbox"
-                type="checkbox"
-                id="item-210630-001"
-              />
-              <span class="item-todo-chkicon"></span>
-              <label class="item-todo-txt" for="item-210630-001">
-                todo리스트 짧은
-              </label>
-              <div class="item-util">
-                <button class="item-edit-btn">
-                  <span class="icon icon-edit"></span>
-                </button>
-                <button class="item-delete-btn">
-                  <span class="icon icon-delete"></span>
-                </button>
-              </div>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✍ 패캠 네카라쿠배
+              </button>
             </li>
-            <li class="item item-post">
-              <p class="item-post-txt" for="item-210630-001">
-                post리스트 긴글을 작성해보겠습니다. 근데 이제 글자수 제한을
-                둔...
-              </p>
-              <div class="item-util">
-                <button class="item-edit-btn">
-                  <span class="icon icon-edit"></span>
-                </button>
-                <button class="item-delete-btn">
-                  <span class="icon icon-delete"></span>
-                </button>
-              </div>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
             </li>
           </ul>
         </div>
-        <div data-date="2021-05-30" class="calendar-date">30</div>
-        <div data-date="2021-05-31" class="calendar-date">31</div>
-        <div data-date="2021-06-01" class="calendar-date">1</div>
-        <div data-date="2021-06-02" class="calendar-date">2</div>
-        <div data-date="2021-06-03" class="calendar-date">3</div>
-        <div data-date="2021-06-04" class="calendar-date">4</div>
-        <div data-date="2021-06-05" class="calendar-date">5</div>
-        <div data-date="2021-06-06" class="calendar-date">6</div>
-        <div data-date="2021-06-07" class="calendar-date">7</div>
-        <div data-date="2021-06-08" class="calendar-date">8</div>
-        <div data-date="2021-06-09" class="calendar-date">9</div>
-        <div data-date="2021-06-10" class="calendar-date">10</div>
-        <div data-date="2021-06-11" class="calendar-date">11</div>
-        <div data-date="2021-06-12" class="calendar-date">12</div>
-        <div data-date="2021-06-13" class="calendar-date">13</div>
-        <div data-date="2021-06-14" class="calendar-date">14</div>
-        <div data-date="2021-06-15" class="calendar-date">15</div>
-        <div data-date="2021-06-16" class="calendar-date">16</div>
-        <div data-date="2021-06-17" class="calendar-date">17</div>
-        <div data-date="2021-06-18" class="calendar-date">18</div>
-        <div data-date="2021-06-19" class="calendar-date">19</div>
-        <div data-date="2021-06-20" class="calendar-date">20</div>
-        <div data-date="2021-06-21" class="calendar-date">21</div>
-        <div data-date="2021-06-22" class="calendar-date">22</div>
-        <div data-date="2021-06-23" class="calendar-date">23</div>
-        <div data-date="2021-06-24" class="calendar-date">24</div>
-        <div data-date="2021-06-25" class="calendar-date">25</div>
-        <div data-date="2021-06-26" class="calendar-date">26</div>
-        <div data-date="2021-06-27" class="calendar-date">27</div>
-        <div data-date="2021-06-18" class="calendar-date">18</div>
-        <div data-date="2021-06-19" class="calendar-date">19</div>
-        <div data-date="2021-06-20" class="calendar-date">20</div>
-        <div data-date="2021-06-21" class="calendar-date">21</div>
-        <div data-date="2021-06-22" class="calendar-date">22</div>
-        <div data-date="2021-06-23" class="calendar-date">23</div>
-        <div data-date="2021-06-24" class="calendar-date">24</div>
-        <div data-date="2021-06-25" class="calendar-date">25</div>
-        <div data-date="2021-06-26" class="calendar-date">26</div>
-        <div data-date="2021-06-27" class="calendar-date">27</div>
-      </div>
-    </main>
-    <script src="./index.js"></script>
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownTypeLabel" class="modal-input-label"
+            >타입 <span class="a11y-hidden">선택</span></span
+          >
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            class="dropdown-toggle"
+            name="itemType"
+            value="todo"
+            aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✅ 투두리스트
+          </button>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownTypeLabel"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✅ 투두리스트
+              </button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">📃 글</button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-input">
+          <label for="itemContent" class="modal-input-label">내용</label>
+          <textarea
+            required
+            placeholder="내용을 입력해주세요"
+            id="itemContent"
+            class="modal-input-txt"
+            name="itemContent"
+          ></textarea>
+        </div>
+        <button class="round-btn modal-submit-btn" type="submit">확인</button>
+        <button class="modal-close-btn" type="button" aria-label="닫기">
+          <span class="icon icon-close"></span>
+        </button>
+      </fieldset>
+    </form>
+    <form class="modal modal-edit">
+      <fieldset>
+        <legend class="modal-title">
+          
+          <span class="month">10</span>월 <span class="date">30</span>일 아이템
+          수정 <span class="a11y-hidden">폼</span>
+        </legend>
+        <input type="hidden" name="itemDate" class="modal-input-date" />
+        <input type="hidden" class="id" name="itemId"></input>
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownCategoryLabel2" class="modal-input-label"
+            >카테고리 <span class="a11y-hidden">선택</span></span
+          >
+          
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            name="itemCategory"
+            value="todolist"
+            class="dropdown-toggle"
+            aria-labelledby="dropdownCategoryLabel2 dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✔ TODO
+          </button>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownCategoryLabel2"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">✔ TODO</button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✍ 패캠 네카라쿠배
+              </button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownTypeLabel" class="modal-input-label"
+            >타입 <span class="a11y-hidden">선택</span></span
+          >
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            class="dropdown-toggle"
+            name="itemType"
+            value="todo"
+            aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✅ 투두리스트
+          </button>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownTypeLabel"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✅ 투두리스트
+              </button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">📃 글</button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-input">
+          <label for="itemContent" class="modal-input-label">내용</label>
+          <textarea
+            required
+            placeholder="내용을 입력해주세요"
+            id="itemContent"
+            class="modal-input-txt"
+            name="itemContent"
+          ></textarea>
+        </div>
+        <button class="round-btn modal-submit-btn" type="submit">확인</button>
+        <button class="modal-close-btn" type="button" aria-label="닫기">
+          <span class="icon icon-close"></span>
+        </button>
+      </fieldset>
+    </form>
+    <div class="modal-dim"></div>
+    <script src="./app.js"></script>
     <script src="./prac1.js"></script>
+    <script src="./modal.js"></script>
+    <script src="./dragEvent.js"></script>
   </body>
 </html>
