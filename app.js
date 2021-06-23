@@ -1,5 +1,73 @@
-console.log('test');
-
+/**
+ * 요소 더미 데이터
+ * 
+ */
+ let data = [
+  {
+      id : 1,
+      type:'todo',
+      category: '네카',
+      date: '2021-06-23',
+      content: '하이',
+      order: 1
+  },
+  {
+      id : 2,
+      type:'todo',
+      category: '네카',
+      date: '2021-06-24',
+      content: '하이',
+      order: 1
+  },
+  {
+      id : 3,
+      type:'todo',
+      category: '네카',
+      date: '2021-06-25',
+      content: '하이',
+      order: 1
+  },
+  {
+      id : 4,
+      type:'text',
+      category: '네카',
+      date: '2021-06-23',
+      content: '하이',
+      order: 2
+  },
+  {
+      id : 5,
+      type:'todo',
+      category: '네카',
+      date: '2021-06-23',
+      content: '하이',
+      order: 1
+  },
+  {
+      id : 6,
+      type:'todo',
+      category: '네카',
+      date: '2021-09-24',
+      content: '하이 9월 24일',
+      order: 1
+  },
+  {
+      id : 7,
+      type:'todo',
+      category: '네카',
+      date: '2021-07-25',
+      content: '하이 7월 25일',
+      order: 1
+  },
+  {
+      id : 8,
+      type:'text',
+      category: '네카',
+      date: '2021-08-23',
+      content: '하이 8월 23일',
+      order: 2
+  },
+]
 const $calendarDates = document.querySelector('.calendar');
 
 document.documentElement.style.setProperty(
@@ -44,8 +112,8 @@ const modalAdd = (() => {
       document.body.classList.toggle('modal-open', isActive);
 
       if (!isActive) return;
-      $titleYear.textContent = itemDate.slice(4, 6);
-      $titleMonth.textContent = itemDate.slice(6, 8);
+      $titleYear.textContent = itemDate.slice(5, 7);
+      $titleMonth.textContent = itemDate.slice(8, 10);
       $itemDate.value = itemDate;
     },
     close() {
@@ -72,7 +140,7 @@ document.querySelector('.calendar-dates').addEventListener('click', e => {
   const $selectedAddBtn = closest(e.target, 'item-add-btn', 'calendar-dates');
   if (!$selectedAddBtn) return;
 
-  const itemDate = $selectedAddBtn.dataset.date;
+  const itemDate = $selectedAddBtn.parentElement.dataset.date;
   modalAdd.toggle(itemDate);
 });
 
@@ -89,5 +157,7 @@ document.querySelector('.modal-add').addEventListener('submit', e => {
   const itemType = e.currentTarget.itemType.value;
   const itemContent = e.currentTarget.itemContent.value;
 
-  console.log(itemDate, itemCategory, itemType, itemContent);
+  addDataArray(itemDate, itemCategory, itemType, itemContent)
+  addDataDomTree(itemDate, itemCategory, itemType, itemContent)
+  console.log(data);
 });
