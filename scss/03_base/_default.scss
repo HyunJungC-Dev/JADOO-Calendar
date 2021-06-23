@@ -62,9 +62,21 @@ button {
   padding: 0;
   background-color: transparent;
   border: 0;
-  font-family: 'Noto Sans KR', 'Sans-serif';
   font-weight: 500;
   cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: 'Noto Sans KR', 'Sans-serif';
+  line-height: 1.4;
+}
+
+input {
+  padding: 0 8px;
+  vertical-align: top;
 }
 
 fieldset {

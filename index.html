@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>자두 캘린더</title>
+    <link rel=" shortcut icon" href="./img/favicon.ico" />
+    <link rel="icon" href="./img/favicon.ico" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -68,15 +70,13 @@
         </div>
         <button class="round-btn move-today-btn">오늘</button>
       </div>
-      <div class="dropdown dropdown-category">
-        <span id="dropdownCategoryLabel" class="a11y-hidden"
-          >카테고리 선택</span
-        >
+      <div id="categoryMain" class="dropdown dropdown-category">
+        <span id="categoryMainLabel" class="a11y-hidden">카테고리 선택</span>
         <button
           type="button"
-          id="dropdownCategoryBtn"
+          id="mainCategoryBtn"
           class="dropdown-toggle"
-          aria-labelledby="dropdownCategoryLabel dropdownCategoryBtn"
+          aria-labelledby="categoryMainLabel mainCategoryBtn"
           aria-haspopup="listbox"
         >
           ✔ TODO
@@ -85,18 +85,73 @@
           class="dropdown-menu"
           tabindex="-1"
           role="listbox"
-          aria-labelledby="dropdownCategoryLabel"
+          aria-labelledby="categoryMainLabel"
+          aria-activedescendant="cateMain001"
         >
-          <li class="dropdown-item" role="option">
-            <button type="button" class="dropdown-option">✔ TODO</button>
+          <li
+            id="cateMain001"
+            role="option"
+            class="dropdown-item dropdown-option"
+            data-cate-name="✔ TODO"
+          >
+            <input
+              type="text"
+              value="✔ TODO"
+              disabled
+              class="dropdown-item-input"
+            />
+            <!-- <button class="category-edit-btn" aria-label="편집">
+              <span class="icon icon-edit-gray"></span>
+            </button> -->
+            <button class="category-delete-btn" aria-label="삭제">
+              <span class="icon icon-delete-gray"></span>
+            </button>
+            <!-- <button type="button" class="dropdown-option"></button> -->
           </li>
-          <li class="dropdown-item" role="option">
-            <button type="button" class="dropdown-option">
-              ✍ 패캠 네카라쿠배
+          <li
+            id="cateMain002"
+            class="dropdown-item dropdown-option"
+            role="option"
+            data-cate-name="✍ 패캠 네카라쿠배 엄청 길다면?????"
+          >
+            <input
+              type="text"
+              value="✍ 패캠 네카라쿠배 엄청 길다면?????"
+              disabled
+              class="dropdown-item-input"
+            />
+            <button class="category-delete-btn" aria-label="삭제">
+              <span class="icon icon-delete-gray"></span>
             </button>
           </li>
-          <li class="dropdown-item" role="option">
-            <button type="button" class="dropdown-option">🙏 감사일기</button>
+          <li
+            id="cateMain003"
+            class="dropdown-item dropdown-option"
+            role="option"
+          >
+            <input
+              type="text"
+              value="🙏 감사일기"
+              disabled
+              class="dropdown-item-input"
+            />
+            <button class="category-delete-btn" aria-label="삭제">
+              <span class="icon icon-delete-gray"></span>
+            </button>
+          </li>
+          <li class="dropdown-item dropdown-add">
+            <label for="newCategoryMain" class="a11y-hidden"
+              >새로운 카테고리명</label
+            >
+            <input
+              type="text"
+              id="newCategoryMain"
+              class="category-add-input"
+              placeholder="카테고리명 입력"
+            />
+            <button class="category-add-btn" aria-label="추가">
+              <span class="icon icon-add-gray"></span>
+            </button>
           </li>
         </ul>
       </div>
@@ -221,11 +276,11 @@
           
           <button
             type="button"
-            id="dropdownCategoryBtn"
+            id="mainCategoryBtn"
             name="itemCategory"
             value="todolist"
             class="dropdown-toggle"
-            aria-labelledby="dropdownCategoryLabel2 dropdownCategoryBtn"
+            aria-labelledby="dropdownCategoryLabel2 mainCategoryBtn"
             aria-haspopup="listbox"
           >
             ✔ TODO
@@ -255,11 +310,12 @@
           >
           <button
             type="button"
-            id="dropdownCategoryBtn"
+            id="mainCategoryBtn"
             class="dropdown-toggle"
             name="itemType"
             value="todo"
             aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
+
             aria-haspopup="listbox"
           >
             ✅ 투두리스트
@@ -302,7 +358,6 @@
     <div class="modal-dim"></div>
     <script src="./app.js"></script>
     <script src="./prac1.js"></script>
-    <script src="./modal.js"></script>
-    <script src="./dragEvent.js"></script>
+    <script src="./dragAndDropFunction.js"></script>
   </body>
 </html>

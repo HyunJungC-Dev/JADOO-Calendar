@@ -1,6 +1,3 @@
-
-
-
 /**
  * 달력 관련 소스코드
  * 
@@ -422,7 +419,7 @@ const changePrevMonth = () =>{
             ${data
                 .filter(item => item.category === currentCategory)
                 // eslint-disable-next-line no-loop-func
-                .filter(item => item.date === convertDateToString(firstMonth, firstMonth, i))
+                .filter(item => item.date === convertDateToString(firstYear, firstMonth, i))
                 // eslint-disable-next-line no-loop-func
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
@@ -431,10 +428,10 @@ const changePrevMonth = () =>{
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
-                                id="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}"
+                                id="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}"
                             />
                             <span class="item-todo-chkicon"></span>
-                            <label class="item-todo-txt" for="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}">
+                            <label class="item-todo-txt" for="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}">
                                 ${item.content}
                             </label>
                             <button class="item-control-btn" aria-label="아이템컨트롤러">
@@ -455,7 +452,7 @@ const changePrevMonth = () =>{
                     :
                     `
                     <li class="item item-todo">
-                        <p class="item-post-txt" for="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}">
+                        <p class="item-post-txt" for="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
                     </li>
@@ -477,7 +474,7 @@ const changePrevMonth = () =>{
             ${data
                 .filter(item => item.category === currentCategory)
                 // eslint-disable-next-line no-loop-func
-                .filter(item => item.date === convertDateToString(firstMonth, firstMonth, i))
+                .filter(item => item.date === convertDateToString(firstYear, firstMonth, i))
                 // eslint-disable-next-line no-loop-func
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
@@ -486,17 +483,17 @@ const changePrevMonth = () =>{
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
-                                id="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}"
+                                id="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}"
                             />
                             <span class="item-todo-chkicon"></span>
-                            <label class="item-todo-txt" for="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}">
+                            <label class="item-todo-txt" for="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}">
                                 ${item.content}
                             </label>
                         </li>`
                     :
                     `
                     <li class="item item-todo">
-                        <p class="item-post-txt" for="item-${convertDateToString(firstMonth, firstMonth, i)}-${item.id}">
+                        <p class="item-post-txt" for="item-${convertDateToString(firstYear, firstMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
                     <button class="item-control-btn"        aria-label="아이템컨트롤러">
@@ -533,8 +530,8 @@ const $calendarMonth = document.querySelector('.nav-month');
 const io = new IntersectionObserver(entries =>{
     entries.forEach(entry => {
         if(entry.isIntersecting){
-            $calendarYear.textContent = entry.target.children[0].children[0].textContent + ".";
-            $calendarMonth.textContent = entry.target.children[0].children[1].textContent + ".";
+            $calendarYear.textContent = entry.target.children[0].children[0].textContent+"";
+            $calendarMonth.textContent = entry.target.children[0].children[1].textContent+"";
             // const {lastDate} = getCustomDate(+entry.target.children[0].children[0].textContent, +entry.target.children[0].children[1].textContent);
             // let node = entry.target;
             // for(let date = 0; date < lastDate; date += 1){
@@ -596,8 +593,8 @@ $calendar.onscroll = () =>{
         }
     }, 500);
 };
-$calendarYear.textContent = year+".";
-$calendarMonth.textContent = month+".";
+$calendarYear.textContent = year+"";
+$calendarMonth.textContent = month+"";
 
 const changeToToday = () =>{
     currentYear = year;
@@ -610,8 +607,8 @@ const changeToToday = () =>{
     changeNextMonth();
     changePrevMonth();
     $calendar.scrollTo(0, target.top - ($calendar.clientHeight / 2));
-    $calendarYear.textContent = year+'.';
-    $calendarMonth.textContent = month+'.';
+    $calendarYear.textContent = year+"";
+    $calendarMonth.textContent = month+"";
 }
 
 const changeToCustomDate = (year, month) =>{
@@ -625,8 +622,8 @@ const changeToCustomDate = (year, month) =>{
     changeNextMonth();
     changePrevMonth();
     $calendar.scrollTo(0, 500);
-    $calendarYear.textContent = currentYear+'.';
-    $calendarMonth.textContent =currentMonth+'.';
+    $calendarYear.textContent = currentYear+"";
+    $calendarMonth.textContent =currentMonth+"";
 }
 
 const $todayBtn = document.querySelector('.move-today-btn');

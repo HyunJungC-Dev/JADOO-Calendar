@@ -11,6 +11,10 @@
     background: url(../../img/plus.png) 50%/30% no-repeat rgba(255, 204, 0, 0.4);
   }
 
+  &-add-gray {
+    background: url(../../img/plus-gray.png) 50%/50% no-repeat;
+  }
+
   &-control {
     background: url(../../img/control.png) 50%/46% no-repeat $primaryPink;
     border-radius: 100%;
@@ -27,9 +31,20 @@
     border-radius: 100%;
   }
 
+  &-edit-gray {
+    background: url(../../img/edit-gray.png) 50%/54% no-repeat $white;
+  }
+
   &-delete {
     background: url(../../img/delete.png) 50%/54% no-repeat $white;
     border-radius: 100%;
+  }
+
+  &-delete-gray {
+    background: url(../../img/delete-gray.png) 50%/50% no-repeat;
+    &:hover {
+      background-image: url(../../img/delete.png);
+    }
   }
 
   &-close {

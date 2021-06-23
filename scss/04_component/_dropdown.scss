@@ -3,64 +3,91 @@
   z-index: 1;
   width: 220px;
   margin: 0 auto 8px;
-}
 
-.dropdown-toggle {
-  padding: 0 40px 0 16px;
-  width: 100%;
-  height: 50px;
-  background: url('../../img/down.png') no-repeat 190px center/16px;
-  border-radius: 6px;
-  border: 1px solid $transGray;
-  line-height: 49px;
-  text-align: left;
-}
+  &-toggle {
+    padding: 0 40px 0 16px;
+    width: 100%;
+    height: 50px;
+    background: url('../../img/down.png') no-repeat 190px center/16px;
+    border-radius: 6px;
+    border: 1px solid $transGray;
+    line-height: 49px;
+    text-align: left;
 
-.dropdown-toggle.--selected {
-  color: #3f4150;
-  border-color: rgba(224, 226, 231, 1);
-}
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-.dropdown-toggle:active {
-  border-color: rgba(224, 226, 231, 1);
-}
+  &-menu {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    background: $white;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
 
-.dropdown-menu {
-  overflow: hidden;
-  visibility: hidden;
-  position: absolute;
-  z-index: 2;
-  top: calc(100% + 4px);
-  left: 0;
-  width: 100%;
-  max-height: 0;
-  background: $white;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  transition: border-color 200ms ease-in, padding 200ms ease-in,
-    max-height 200ms ease-in, box-shadow 200ms ease-in;
-}
+  &-menu.--show {
+    overflow-y: auto;
+    visibility: visible;
+    padding: 8px 0;
+    max-height: 440px;
+    border-color: 1px solid $transGray2;
+    box-shadow: $boxShadow;
+    scrollbar-width: none; /* Firefox  */
+    -ms-overflow-style: none; /* IE and Edge */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
-.dropdown-menu.--show {
-  visibility: visible;
-  padding: 8px 0;
-  max-height: 280px;
-  border-color: $transGray2;
-  box-shadow: $boxShadow;
-}
+  &-item {
+    margin: 0 2px;
+    width: calc(100% - 4px);
+    padding: 0 4px 0 10px;
+    height: 44px;
+    line-height: 44px;
+    text-align: inherit;
+    font-weight: 400;
+  }
 
-.dropdown-option {
-  margin: 0 2px;
-  width: calc(100% - 4px);
-  height: 44px;
-  padding: 0 16px;
-  line-height: 44px;
-  text-align: inherit;
-  font-weight: 400;
-}
+  &-item-input {
+    width: calc(100% - 44px);
+    height: 40px;
+    line-height: 38px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
-.dropdown-option:hover {
-  background-color: $lightGray;
+    &:disabled {
+      background: transparent;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+
+  &-option {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $lightGray;
+    }
+
+    &.--selected {
+      color: $primaryPlum;
+    }
+  }
+
+  &-add {
+    margin-top: 10px;
+  }
 }
 
 .dropdown-calendar {
@@ -86,4 +113,14 @@
   width: 48%;
   text-align: center;
   font-size: 1.1rem;
+}
+
+.category-add-input {
+  width: calc(100% - 44px);
+  height: 40px;
+  background: #f6f6f6;
+  border: none;
+  border-radius: 10px;
+  line-height: 38px;
+  font-size: 1rem;
 }
