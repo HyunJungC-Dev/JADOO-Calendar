@@ -17,6 +17,10 @@
 
   &:hover .item-control-btn {
     opacity: 1;
+    + .item-util.--show {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &-todo {
@@ -41,6 +45,7 @@
     padding: 10px 4px;
     background: $primaryLightPink2;
     border-radius: 10px;
+    // opacity: 0; // hover 아닐 땐 안 보이도록
 
     &::before {
       content: '';
@@ -52,13 +57,14 @@
       border-style: solid;
       border-width: 12px;
       border-color: transparent $primaryLightPink2 transparent transparent;
+      pointer-events: none; //
     }
   }
 
-  &-util.--show {
-    display: flex;
-    flex-direction: column;
-  }
+  // &-util.--show {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
 
   &-edit-btn {
     margin: 6px 0;

@@ -205,6 +205,100 @@
         </button>
       </fieldset>
     </form>
+    <form class="modal modal-edit">
+      <fieldset>
+        <legend class="modal-title">
+          
+          <span class="month">10</span>월 <span class="date">30</span>일 아이템
+          수정 <span class="a11y-hidden">폼</span>
+        </legend>
+        <input type="hidden" name="itemDate" class="modal-input-date" />
+        <input type="hidden" class="id" name="itemId"></input>
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownCategoryLabel2" class="modal-input-label"
+            >카테고리 <span class="a11y-hidden">선택</span></span
+          >
+          
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            name="itemCategory"
+            value="todolist"
+            class="dropdown-toggle"
+            aria-labelledby="dropdownCategoryLabel2 dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✔ TODO
+          </button>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownCategoryLabel2"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">✔ TODO</button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✍ 패캠 네카라쿠배
+              </button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown-category modal-input">
+          <span id="dropdownTypeLabel" class="modal-input-label"
+            >타입 <span class="a11y-hidden">선택</span></span
+          >
+          <button
+            type="button"
+            id="dropdownCategoryBtn"
+            class="dropdown-toggle"
+            name="itemType"
+            value="todo"
+            aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
+            aria-haspopup="listbox"
+          >
+            ✅ 투두리스트
+          </button>
+          <ul
+            class="dropdown-menu"
+            tabindex="-1"
+            role="listbox"
+            aria-labelledby="dropdownTypeLabel"
+          >
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">
+                ✅ 투두리스트
+              </button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">📃 글</button>
+            </li>
+            <li class="dropdown-item" role="option">
+              <button type="button" class="dropdown-option">🙏 감사일기</button>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-input">
+          <label for="itemContent" class="modal-input-label">내용</label>
+          <textarea
+            required
+            placeholder="내용을 입력해주세요"
+            id="itemContent"
+            class="modal-input-txt"
+            name="itemContent"
+          ></textarea>
+        </div>
+        <button class="round-btn modal-submit-btn" type="submit">확인</button>
+        <button class="modal-close-btn" type="button" aria-label="닫기">
+          <span class="icon icon-close"></span>
+        </button>
+      </fieldset>
+    </form>
     <div class="modal-dim"></div>
     <script src="./app.js"></script>
     <script src="./prac1.js"></script>

@@ -61,7 +61,7 @@ const initCalendar = () =>{
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
                         `
-                        <li class="item item-todo">
+                        <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
@@ -88,7 +88,7 @@ const initCalendar = () =>{
                         </li>`
                     :
                     `
-                    <li class="item item-todo">
+                    <li class="item item-todo data-id=${item.id}">
                         <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
@@ -132,7 +132,7 @@ const initCalendar = () =>{
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
                         `
-                        <li class="item item-todo">
+                        <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
@@ -159,7 +159,7 @@ const initCalendar = () =>{
                         </li>`
                     :
                     `
-                    <li class="item item-todo">
+                    <li class="item item-todo" data-id=${item.id}>
                         <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
@@ -200,7 +200,7 @@ const initCalendar = () =>{
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
                         `
-                        <li class="item item-todo">
+                        <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
@@ -227,7 +227,7 @@ const initCalendar = () =>{
                         </li>`
                     :
                     `
-                    <li class="item item-todo">
+                    <li class="item item-todo" data-id=${item.id}>
                         <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
@@ -278,7 +278,7 @@ const changeNextMonth = () =>{
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
                         `
-                        <li class="item item-todo">
+                        <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
@@ -305,7 +305,7 @@ const changeNextMonth = () =>{
                         </li>`
                     :
                     `
-                    <li class="item item-todo">
+                    <li class="item item-todo" data-id=${item.id}>
                         <p class="item-post-txt" for="item-${convertDateToString(lastYear, lastMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
@@ -347,7 +347,7 @@ const changeNextMonth = () =>{
                 .reduce((acc, item) => {
                     acc += item.type === 'todo' ? 
                         `
-                        <li class="item item-todo">
+                        <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
@@ -374,7 +374,7 @@ const changeNextMonth = () =>{
                         </li>`
                     :
                     `
-                    <li class="item item-todo">
+                    <li class="item item-todo" data-id=${item.id}>
                         <p class="item-post-txt" for="item-${convertDateToString(lastYear, lastMonth, i)}-${item.id}">
                             ${item.content}
                         </p>
@@ -645,11 +645,7 @@ const $inputCustomMonth = document.querySelector('.custom-month');
 
 // 확인 누를 경우 배열에 추가
 // 확인 누를 경우 돔 트리에 추가
-const addDataArray = (
-    itemDate,
-    itemCategory,
-    itemType,
-    itemContent) =>{
+const addDataArray = (itemDate, itemCategory, itemType, itemContent) =>{
 
     data = [...data, 
         {
@@ -663,11 +659,7 @@ const addDataArray = (
     ]
 }
 
-const addDataDomTree = (
-    itemDate,
-    itemCategory,
-    itemType,
-    itemContent) =>{
+const addDataDomTree = (itemDate, itemCategory, itemType, itemContent) =>{
     
     const dates = [...document.querySelector('.calendar-dates').children];
 
@@ -683,6 +675,20 @@ const addDataDomTree = (
                     <label class="item-todo-txt" for="item-${itemDate}-${data.length}">
                         ${itemContent}
                     </label>
+                    <button class="item-control-btn"        aria-label="아이템컨트롤러">
+                    <span class="icon icon-control"></span>
+                  </button>
+                  <div class="item-util">
+                    <button class="item-move-btn" aria-label="아이템이동">
+                      <span class="icon icon-move"></span>
+                    </button>
+                    <button class="item-edit-btn" aria-label="아이템수정">
+                      <span class="icon icon-edit"></span>
+                    </button>
+                    <button class="item-delete-btn" aria-label="아이템삭제">
+                      <span class="icon icon-delete"></span>
+                    </button>
+                  </div>
                 </li>`
             :
             `
@@ -690,9 +696,43 @@ const addDataDomTree = (
                 <p class="item-post-txt" for="item-${itemDate}-${data.length}">
                     ${itemContent}
                 </p>
+                <button class="item-control-btn"        aria-label="아이템컨트롤러">
+                <span class="icon icon-control"></span>
+              </button>
+              <div class="item-util">
+                <button class="item-move-btn" aria-label="아이템이동">
+                  <span class="icon icon-move"></span>
+                </button>
+                <button class="item-edit-btn" aria-label="아이템수정">
+                  <span class="icon icon-edit"></span>
+                </button>
+                <button class="item-delete-btn" aria-label="아이템삭제">
+                  <span class="icon icon-delete"></span>
+                </button>
+              </div>
             </li>`
         $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
 
     }
 
+const deleteDataArray = itemId =>{
+  data = data.filter(item => item.id !== itemId);
+}
+const deleteDataDOM = (itemId, $parentNode) =>{
+  const $nodeWillDeleted = [...$parentNode.children].find(item => item.dataset.id === itemId);
+  $parentNode.removeChild($nodeWillDeleted);
+}
+const modifyDataArray = (itemId, itemDate, itemCategory, itemType, itemContent) =>{
+  const modifiedData = data.filter(item => item.id === itemId);
+  modifiedData.date = itemDate;
+  modifiedData.category = itemCategory;
+  modifiedData.type = itemType;
+  modifiedData.content = itemContent;
+  data = {modifiedData, ...data};
 
+} 
+const modifyDataDOM = (itemId, itemDate, itemCategory, itemType, itemContent) =>{
+  const nodeWillModifieds = document.querySelectorAll('.item');
+  const nodeWillModified = [...nodeWillModifieds].find(item => item.dataset.id === itemId);
+  nodeWillModified.querySelector('label').textContent = itemContent;
+}
