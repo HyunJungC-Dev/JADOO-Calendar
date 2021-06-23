@@ -3,7 +3,10 @@
   overflow-y: auto;
   padding: 60px 0 0 20px;
   width: calc(100% - 260px);
-
+.unactive{
+  color:gray !important;
+  // background-color: gray;
+}
   @include laptop {
     padding-top: 0;
   }
