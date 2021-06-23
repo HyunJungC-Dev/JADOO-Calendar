@@ -67,6 +67,17 @@ button {
   cursor: pointer;
 }
 
-.hide {
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body.modal-open {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.--hide {
   display: none;
 }

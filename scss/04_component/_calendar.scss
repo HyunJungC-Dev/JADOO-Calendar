@@ -73,12 +73,24 @@
 .calendar-date {
   border-bottom: 1px solid $gray;
   border-left: 1px solid $gray;
+}
 
+.calendar-day {
   &:nth-child(7n-1) {
     color: $calendarBlue;
   }
 
   &:nth-child(7n) {
+    color: $calendarRed;
+  }
+}
+
+.calendar-date {
+  &:nth-child(7n-1) .calendar-date-txt {
+    color: $calendarBlue;
+  }
+
+  &:nth-child(7n) .calendar-date-txt {
     color: $calendarRed;
   }
 }

@@ -11,9 +11,14 @@
     background: url(../../img/plus.png) 50%/30% no-repeat rgba(255, 204, 0, 0.4);
   }
 
-  &-delete {
-    margin: 0 6px;
-    background: url(../../img/delete.png) 50%/54% no-repeat $white;
+  &-control {
+    background: url(../../img/control.png) 50%/46% no-repeat $primaryPink;
+    border-radius: 100%;
+    box-shadow: $boxShadow;
+  }
+
+  &-move {
+    background: url(../../img/move.png) 50%/46% no-repeat $white;
     border-radius: 100%;
   }
 
@@ -22,10 +27,12 @@
     border-radius: 100%;
   }
 
-  &-down {
-    &::before {
-      content: '\f107';
-      font-family: fontello;
-    }
+  &-delete {
+    background: url(../../img/delete.png) 50%/54% no-repeat $white;
+    border-radius: 100%;
+  }
+
+  &-close {
+    background: url(../../img/close.png) 50%/40% no-repeat;
   }
 }
