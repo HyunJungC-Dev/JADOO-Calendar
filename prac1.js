@@ -67,23 +67,23 @@ const calendar = (() =>{
       rootMargin: '0% 0px -50% 0px'
   });
   const itemControllerInHTML = () => `
-  <button class="item-control-btn" aria-label="아이템컨트롤러">
-    <span class="icon icon-control"></span>
-  </button>
-  <div class="item-util">
-    <button class="item-move-btn" aria-label="아이템이동">
-      <span class="icon icon-move"></span>
+    <button class="item-control-btn" aria-label="아이템컨트롤러">
+      <span class="icon icon-control"></span>
     </button>
-    <button class="item-edit-btn" aria-label="아이템수정">
-      <span class="icon icon-edit"></span>
-    </button>
-    <button class="item-delete-btn" aria-label="아이템삭제">
-      <span class="icon icon-delete"></span>
-    </button>
-  </div>`
-    ;
+    <div class="item-util">
+      <button class="item-move-btn" aria-label="아이템이동">
+        <span class="icon icon-move"></span>
+      </button>
+      <button class="item-edit-btn" aria-label="아이템수정">
+        <span class="icon icon-edit"></span>
+      </button>
+      <button class="item-delete-btn" aria-label="아이템삭제">
+        <span class="icon icon-delete"></span>
+      </button>
+    </div>`
+      ;
 
-  const initCalendar = () =>{
+const initCalendar = () =>{
     const {firstDay, lastDate, lastDay, lastMonthDate} = getCustomDate(currentYear, currentMonth);
     let temp = '';
     for(let i = firstDay-1; i >= 0; i -= 1)
@@ -120,6 +120,7 @@ const calendar = (() =>{
                             ${item.content}
                         </p>
                       ${itemControllerInHTML()}
+
                     </li>
                   `
                   return acc;
@@ -134,7 +135,7 @@ const calendar = (() =>{
     for(let i = 1; i <= lastDate; i += 1){
         temp += 
         `
-        <div class="calendar-date ${year === currentYear && month === currentMonth && date===i? 'today' : ''} ${i % 7 === 1 ? 'standard' : ''}"  data-date=${convertDateToString(currentYear, currentMonth, i)}>
+        <div class="calendar-date ${year === currentYear && month === currentMonth && date===i? 'today' : ''} ${i === 1 ? 'standard' : ''}"  data-date=${convertDateToString(currentYear, currentMonth, i)}>
         <span class="calendar-date-txt">${i === 1 ? currentMonth + '. ' + i : i} ${i === 1 ? `<span class="--hide">${currentYear}</span><span class="--hide">${currentMonth}</span>`:''}</span>
         <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth} 월 ${i}일 아이템 추가"><span class="icon icon-add"></span></button>
         <ul class="items">
@@ -407,18 +408,18 @@ const calendar = (() =>{
       $calendarGrid.insertAdjacentHTML('afterbegin', temp);
   }
   const throttling = (() => {
-    let throttleCheck;
-    return {
-        throttle(callback, milliseconds){
-            if(!throttleCheck){
-                throttleCheck = setTimeout(() => {
-                    callback();
-                    throttleCheck = false;
-                }, milliseconds);
-            }
-        }
-    };
-})();
+      let throttleCheck;
+      return {
+          throttle(callback, milliseconds){
+              if(!throttleCheck){
+                  throttleCheck = setTimeout(() => {
+                      callback();
+                      throttleCheck = false;
+                  }, milliseconds);
+              }
+          }
+      };
+  })();
   return {
     renderCalendar: () => { // 전체 렌더
       initCalendar();
@@ -464,15 +465,15 @@ const calendar = (() =>{
             })
         }
         if ($calendar.scrollHeight - Math.ceil($calendar.scrollTop) <= $calendar.clientHeight) {
-          changeNextMonth();
+            changeNextMonth();
             const $standards = document.querySelectorAll('.standard');
             [...$standards].forEach($standard => {
                 io.observe($standard);
             })
         }
     }, 500);
-    },
   }
+}
 })();
 // 코드 실행 부분
 calendar.renderCalendar();
@@ -489,6 +490,7 @@ $todayBtn.addEventListener('click', () => calendar.changeToToday(todayPosition))
  * 모달 창 관련 소스 코드
  * 
  */
+
 const addDataArray = (itemDate, itemCategory, itemType, itemContent) =>{
     data = [...data, 
         {
@@ -528,6 +530,7 @@ const addDataDomTree = (itemDate, itemCategory, itemType, itemContent) =>{
             </li>`
         $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
     }
+
 const deleteDataArray = itemId =>{
   data = data.filter(item => item.id !== itemId);
 }

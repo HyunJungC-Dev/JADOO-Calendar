@@ -4,7 +4,7 @@ $calendarDates.addEventListener('mousedown', mousedownEvent => {
     x: mousedownEvent.clientX,
     y: mousedownEvent.clientY
   };
-
+  let draggable = null;
   if (mousedownEvent.target.classList.contains('icon-move')) {
     mousedownEvent.target.style['pointer-events'] = 'none';
     mousedownEvent.target.parentNode.style['pointer-events'] = 'none';
@@ -13,6 +13,7 @@ $calendarDates.addEventListener('mousedown', mousedownEvent => {
     mousedownEvent.target.parentNode.parentNode.parentNode.classList.add(
       'dragging'
     );
+    draggable = document.querySelector('.dragging');
     [...document.querySelectorAll('.item-control-btn')].forEach(
       $itemControlBtn => {
         $itemControlBtn.classList.toggle('--invisible');
@@ -20,14 +21,12 @@ $calendarDates.addEventListener('mousedown', mousedownEvent => {
     );
 
     $calendarDates.onmousemove = e => {
-      const draggable = document.querySelector('.dragging');
       draggable.style.transform = `translate3d(${
         e.clientX - initialMousePos.x
       }px, ${e.clientY - initialMousePos.y}px, 0)`;
     };
 
     let afterElement = null;
-    let draggable = null;
     let $container = null;
     let prevAfterElemnt = null;
     let prev$container = null;

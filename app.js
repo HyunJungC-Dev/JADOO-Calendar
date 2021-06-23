@@ -76,7 +76,6 @@
     order: 2
 },
 ]
-
 const $calendarDates = document.querySelector('.calendar');
   
 document.documentElement.style.setProperty(
@@ -300,6 +299,7 @@ const modalAdd = (() => {
   const $titleYear = document.querySelector('.modal-add .month');
   const $titleMonth = document.querySelector('.modal-add .date');
   const $itemDate = document.querySelector('.modal-add .modal-input-date');
+
   return {
     toggle(itemDate) {
       isActive = !isActive;
