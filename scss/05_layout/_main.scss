@@ -12,10 +12,6 @@ body {
   padding-top: 100px;
   width: 260px;
   height: 100vh;
-
-  @include laptop {
-    background-color: #f3f3f3;
-  }
 }
 
 .nav-current {

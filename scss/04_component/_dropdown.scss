@@ -16,6 +16,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    &.--disabled {
+      background: $lightGray;
+      cursor: not-allowed;
+    }
   }
 
   &-menu {

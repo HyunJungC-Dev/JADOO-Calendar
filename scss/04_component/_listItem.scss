@@ -98,6 +98,10 @@
     width: 26px;
     height: 26px;
     z-index: 4;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &-chkicon {
@@ -119,6 +123,7 @@
   &-txt {
     display: block;
     padding-left: 34px;
+    cursor: pointer;
   }
 }
 

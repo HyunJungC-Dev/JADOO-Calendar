@@ -26,6 +26,7 @@ body {
   font-family: 'Noto Sans KR', 'Sans-serif';
   font-size: inherit;
   color: $black;
+  word-break: break-all;
 }
 
 // 제목 글자 크기 및 굵기 재지정 --------------------------------------------------------- /

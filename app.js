@@ -3,85 +3,244 @@ const ITEM_TYPE = [
   { id: 2, name: '📃 글' }
 ];
 
-/**
- * 요소 더미 데이터
- *
- */
+let currentCategory = '0';
+currentCategory = '1';
+
 let data = [];
 data = [
   {
     id: 1,
-    type: '1',
-    category: '1',
-    date: '2021-06-23',
-    content: '하이',
+    type: '2',
+    category: '2',
+    date: '2021-06-20',
+    content:
+      '지훈님께서 아침에 트라이(Trie) 가사 검색 문제에 대한 힌트를 잘 알려주셔서 문제를 이해하고, 푸는데 정말 큰 도움이 되었다.',
     order: 1
   },
   {
     id: 2,
     type: '2',
     category: '2',
-    date: '2021-06-24',
-    content: '하이',
+    date: '2021-06-21',
+    content:
+      '오늘 힘을 내서 열심히 공부할 수 있도록 도와주신 모든 동료들에게 감사하다.',
     order: 1
   },
   {
     id: 3,
     type: '2',
-    category: '3',
-    date: '2021-06-25',
-    content: '하이',
+    category: '2',
+    date: '2021-06-22',
+    content:
+      '이전까지 이해를 제대로 하지 못했던 다익스트라 알고리즘을 완벽하게 설명해주신 강사님께 정말 감사했다.',
     order: 1
   },
   {
     id: 4,
-    type: '1',
+    type: '2',
     category: '2',
     date: '2021-06-23',
-    content: '하이',
-    order: 2
+    content: '맛있는 햄버거 집에 데려다준 상원님에게 감사',
+    order: 1
   },
   {
     id: 5,
-    type: '1',
-    category: '1',
-    date: '2021-06-23',
-    content: '하이',
+    type: '2',
+    category: '2',
+    date: '2021-06-24',
+    content:
+      '서로 짖궂게 굴어도 나를 챙겨주는 걸 느낄 수 있게끔 해주는 재혁님께 감사',
     order: 1
   },
   {
     id: 6,
     type: '2',
     category: '2',
-    date: '2021-09-24',
-    content: '하이 9월 24일',
+    date: '2021-06-15',
+    content:
+      '늘 우리들이 수업을 잘 들을 수 있게 신경쓰시고 안보이는 곳에서 누구보다 바쁘실 클래스 매니저님께 감사',
     order: 1
   },
   {
     id: 7,
-    type: '1',
-    category: '1',
-    date: '2021-07-25',
-    content: '하이 7월 25일',
+    type: '2',
+    category: '2',
+    date: '2021-06-16',
+    content: '끝나고 맥주 한 잔 마실 수 있는 3000원이 있는 것에 감사',
     order: 1
   },
   {
     id: 8,
     type: '2',
-    category: '3',
-    date: '2021-08-23',
-    content: '하이 8월 23일',
-    order: 2
+    category: '2',
+    date: '2021-06-17',
+    content: '동료들이 잘해서 배울게 많은것에 감사',
+    order: 1
   },
   {
     id: 9,
+    type: '2',
+    category: '2',
+    date: '2021-06-18',
+    content:
+      '알고리즘에 대해 잘 모르는 저에게 따스한 위로의 말을 보내준 다은님께 감사',
+    order: 1
+  },
+  {
+    id: 10,
+    type: '2',
+    category: '2',
+    date: '2021-06-19',
+    content:
+      '오늘 알고리즘 스터디를 통해 배운 점이 많았다. 내가 푼 풀이보다 훨씬 좋은 풀이를 조원들에게 배울 수 있었다.',
+    order: 1
+  },
+  {
+    id: 11,
+    type: '2',
+    category: '3',
+    date: '2021-06-24',
+    content: '바람떡',
+    order: 1
+  },
+  {
+    id: 12,
+    type: '2',
+    category: '3',
+    date: '2021-06-24',
+    content: '갈비찜',
+    order: 2
+  },
+  {
+    id: 13,
+    type: '2',
+    category: '3',
+    date: '2021-06-23',
+    content: '비빔면 & 크로플',
+    order: 3
+  },
+  {
+    id: 14,
+    type: '2',
+    category: '3',
+    date: '2021-06-23',
+    content: '퐁라떼',
+    order: 2
+  },
+  {
+    id: 15,
+    type: '2',
+    category: '3',
+    date: '2021-06-23',
+    content: '성수감자탕',
+    order: 1
+  },
+  {
+    id: 16,
+    type: '2',
+    category: '3',
+    date: '2021-06-22',
+    content: '칙피스',
+    order: 2
+  },
+  {
+    id: 17,
+    type: '2',
+    category: '3',
+    date: '2021-06-22',
+    content: '육쌈냉면 비냉',
+    order: 1
+  },
+  {
+    id: 25,
     type: '1',
     category: '1',
-    date: '2021-06-27',
-    content: '하이 8월 23일',
+    date: '2021-06-21',
+    content: '자두 캘린더 기획발표',
+    order: 1
+  },
+  {
+    id: 18,
+    type: '1',
+    category: '1',
+    date: '2021-06-21',
+    content: '자두 캘린더 마크업 & CSS',
     order: 2
-},
-]
+  },
+  {
+    id: 19,
+    type: '1',
+    category: '1',
+    date: '2021-06-22',
+    content: '자두 캘린더 마크업 & CSS',
+    order: 1
+  },
+  {
+    id: 22,
+    type: '1',
+    category: '1',
+    date: '2021-06-22',
+    content: '자두 캘린더 무한스크롤',
+    order: 2
+  },
+  {
+    id: 20,
+    type: '1',
+    category: '1',
+    date: '2021-06-23',
+    content: '자두 캘린더 셀렉트박스',
+    order: 1
+  },
+  {
+    id: 21,
+    type: '1',
+    category: '1',
+    date: '2021-06-24',
+    content: '자두 캘린더 모달창',
+    order: 1
+  },
+  {
+    id: 28,
+    type: '1',
+    category: '1',
+    date: '2021-06-24',
+    content: '자두 캘린더 ppt',
+    order: 1
+  },
+  {
+    id: 23,
+    type: '1',
+    category: '1',
+    date: '2021-06-23',
+    content: '자두 캘린더 마우스이벤트',
+    order: 2
+  },
+  {
+    id: 24,
+    type: '1',
+    category: '1',
+    date: '2021-06-19',
+    content: '자두 캘린더 프로토타입 만들기',
+    order: 1
+  },
+  {
+    id: 26,
+    type: '1',
+    category: '1',
+    date: '2021-06-18',
+    content: 'JS UI 짝코딩 발표',
+    order: 1
+  },
+  {
+    id: 27,
+    type: '1',
+    category: '1',
+    date: '2021-06-17',
+    content: 'JS UI 짝코딩',
+    order: 1
+  }
+];
+
 const $calendarDates = document.querySelector('.calendar');
   
 document.documentElement.style.setProperty(
@@ -204,7 +363,7 @@ const categoryUtil = (() => {
       <button
         type="button"
         id="modalEditCategoryBtn"
-        class="dropdown-toggle"
+        class="dropdown-toggle --disabled"
         name="itemCategory"
         value="${categories[0].id}"
         aria-labelledby="modalEditCategoryLabel modalEditCategoryBtn"
@@ -246,24 +405,7 @@ const categoryUtil = (() => {
       };
     })();
 
-    const dropdownCategoryModalEdit = (() => {
-      const $dropdown = document.querySelector(
-        '#modalEditCategoryBtn + .dropdown-menu'
-      );
-      return {
-        toggle() {
-          $dropdown.classList.toggle('--show');
-        },
-        close() {
-          $dropdown.classList.remove('--show');
-        }
-      };
-    })();
-
     const $modalAddCategoryBtn = document.getElementById('modalAddCategoryBtn');
-    const $modalEditCategoryBtn = document.getElementById(
-      'modalEditCategoryBtn'
-    );
 
     document
       .querySelector('.modal-add .dropdown-category')
@@ -399,9 +541,9 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   categoryUtil.fetch([
-    { id: 1, name: '✔ TODO', selected: true },
-    { id: 2, name: '✍ 네카라쿠배', selected: false },
-    { id: 3, name: '🙏 감사일기', selected: false }
+    { id: 1, name: '✍ 네카라쿠배', selected: true },
+    { id: 2, name: '🙏 감사일기', selected: false },
+    { id: 3, name: '🐷 꿀꿀 🐷', selected: false }
   ]);
 
   // 아이템 추가/편집창 타입 드롭다운 렌더링
@@ -443,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button
         type="button"
         id="modalEditTypeBtn"
-        class="dropdown-toggle"
+        class="dropdown-toggle --disabled"
         name="itemType"
         value="${ITEM_TYPE[0].id}"
         aria-labelledby="modalEditTypeLabel modalEditTypeBtn"
@@ -556,6 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('.modal-dim').addEventListener('click', () => {
     modalAdd.close();
+    modalAdd.reset();
     modalEdit.close();
     [...document.querySelectorAll('.modal-add .dropdown-menu')].forEach(
       $dropdown => {
@@ -586,50 +729,6 @@ const dropdownCategoryMain = (() => {
 document.getElementById('mainCategoryBtn').addEventListener('click', () => {
   dropdownCategoryMain.toggle();
 });
-
-document
-  .querySelector('#categoryMain .dropdown-menu')
-  .addEventListener('click', e => {
-    const $dropdownOption = closest(
-      e.target,
-      'dropdown-option-icon',
-      'dropdown-menu'
-    );
-    const $cateAddBtn = closest(e.target, 'category-add-btn', 'dropdown-menu');
-    const $cateDeleteBtn = closest(
-      e.target,
-      'category-delete-btn',
-      'dropdown-menu'
-    );
-
-    if ($cateDeleteBtn) {
-      if (categoryUtil.chkLength() < 2) {
-        // eslint-disable-next-line no-alert
-        alert('카테고리는 1개 이상 존재해야 합니다.');
-        return;
-      }
-      categoryUtil.remove(+$dropdownOption.dataset.cateId);
-      document.getElementById('mainCategoryBtn').textContent =
-        categoryUtil.getSelectedName();
-      return;
-    }
-
-    if ($cateAddBtn) {
-      const cateName = $cateAddBtn.previousElementSibling.value.trim();
-      if (!cateName) return;
-      categoryUtil.add(cateName);
-      $cateAddBtn.previousElementSibling.value = '';
-      document.getElementById('newCategoryMain').focus();
-      return;
-    }
-
-    if ($dropdownOption) {
-      document.getElementById('mainCategoryBtn').textContent =
-        $dropdownOption.dataset.cateName;
-      categoryUtil.select(+$dropdownOption.dataset.cateId);
-      dropdownCategoryMain.close();
-    }
-  });
 
 // 모달
 const modalAdd = (() => {
@@ -719,6 +818,7 @@ document
   .querySelector('.modal-add .modal-close-btn')
   .addEventListener('click', () => {
     modalAdd.close();
+    modalAdd.reset();
   });
 
 document
@@ -727,7 +827,7 @@ document
     modalEdit.close();
   });
 
-let nextDataId = 21;
+let nextDataId = 31;
 
 // 아이템 추가
 document.querySelector('.modal-add').addEventListener('submit', e => {
@@ -764,7 +864,6 @@ document.querySelector('.modal-edit').addEventListener('submit', e => {
   modifyDataDOM(editItem);
   modalEdit.close();
 });
-
 
 document.querySelector('.calendar-dates').addEventListener('click', e => {
   const $selectedControlBtn = closest(

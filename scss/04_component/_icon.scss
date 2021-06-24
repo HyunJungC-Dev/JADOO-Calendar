@@ -4,11 +4,10 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background: #fcf;
   font-size: 1.1rem;
 
   &-add {
-    background: url(../../img/plus.png) 50%/30% no-repeat rgba(255, 204, 0, 0.4);
+    background: url(../../img/plus.png) 50%/30% no-repeat;
   }
 
   &-add-gray {

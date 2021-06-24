@@ -20,8 +20,6 @@ const convertDateToString = (year, month, date) =>{
     return newYear+'-'+newMonth+'-'+newDate
 }
 
-const currentCategory = '1';
-
 // 클로저
 const calendar = (() =>{
   const $calendar = document.querySelector('.calendar');
@@ -602,7 +600,7 @@ const deleteDataDOM = (itemId, $parentNode) => {
 };
 
 const modifyDataArray = ({ id, content }) => {
-  const modifiedData = data.filter(item => item.id === id);
+  const modifiedData = data.filter(item => item.id === +id)[0];
   modifiedData.content = content;
 };
 
@@ -615,3 +613,51 @@ const modifyDataDOM = ({ id, date, type, content }) => {
     $modifyItem.textContent = content;
   }
 };
+
+// 메인화면 카테고리 드롭다운 클릭 이벤트
+document
+  .querySelector('#categoryMain .dropdown-menu')
+  .addEventListener('click', e => {
+    const $dropdownOption = closest(
+      e.target,
+      'dropdown-option-icon',
+      'dropdown-menu'
+    );
+    const $cateAddBtn = closest(e.target, 'category-add-btn', 'dropdown-menu');
+    const $cateDeleteBtn = closest(
+      e.target,
+      'category-delete-btn',
+      'dropdown-menu'
+    );
+
+    if ($cateDeleteBtn) {
+      if (categoryUtil.chkLength() < 2) {
+        // eslint-disable-next-line no-alert
+        alert('카테고리는 1개 이상 존재해야 합니다.');
+        return;
+      }
+      categoryUtil.remove(+$dropdownOption.dataset.cateId);
+      document.getElementById('mainCategoryBtn').textContent =
+        categoryUtil.getSelectedName();
+      return;
+    }
+
+    if ($cateAddBtn) {
+      const cateName = $cateAddBtn.previousElementSibling.value.trim();
+      if (!cateName) return;
+      categoryUtil.add(cateName);
+      $cateAddBtn.previousElementSibling.value = '';
+      document.getElementById('newCategoryMain').focus();
+      return;
+    }
+
+    if ($dropdownOption) {
+      document.getElementById('mainCategoryBtn').textContent =
+        $dropdownOption.dataset.cateName;
+      categoryUtil.select(+$dropdownOption.dataset.cateId);
+      dropdownCategoryMain.close();
+
+      currentCategory = $dropdownOption.dataset.cateId;
+      calendar.renderCalendar();
+    }
+  });
