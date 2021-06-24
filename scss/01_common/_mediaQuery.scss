@@ -1,0 +1,7 @@
+// 미디어 쿼리 중단점 (Breakpoints) --------------------------------------------------------------- /
+$breakpoint: 1440px;
+@mixin laptop {
+  @media screen and (max-width: #{$breakpoint}) {
+    @content;
+  }
+}

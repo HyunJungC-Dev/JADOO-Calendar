@@ -1,0 +1,21 @@
+// Initial ( 기본 색상 ) --------------------------------------------------------- /
+$white: #fff;
+$black: #222;
+$gray: #ddd;
+
+// Primary ( 주요 색상 ) --------------------------------------------------------- /
+$primaryPlum: #b6205c;
+$primaryPink: #ffa0c4; //
+$primaryLightPink: #f1c1d3;
+$primaryLightPink2: #f8e6ed;
+$primaryTransPink: rgba(255, 196, 218, 0.4);
+
+// Secondary ( 보조 색상 ) ------------------------------------------------------- /
+$calendarRed: #b6205c; // 일요일
+$calendarBlue: #0075d3; // 토요일
+
+// Grayscale & Backgrounds ( 흑백 색상 ) ----------------------------------------- /
+$transGray: rgba(224, 226, 231, 0.75);
+$transGray2: rgba(224, 226, 231, 0.5);
+$lightGray: #f8f9fa;
+$boxShadow: 0 4px 9px 0 rgba(63, 65, 80, 0.1);

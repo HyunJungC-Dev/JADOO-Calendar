@@ -1,0 +1,38 @@
+:root {
+  --scroll-width: 10px;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.navigation {
+  overflow-y: auto;
+  float: right;
+  padding-top: 100px;
+  width: 260px;
+  height: 100vh;
+
+  @include laptop {
+    background-color: #f3f3f3;
+  }
+}
+
+.nav-current {
+  font-family: 'yg-jalnan';
+  font-size: 2.8rem;
+  text-align: center;
+}
+
+.nav-year,
+.nav-month {
+  &::after {
+    content: '.';
+  }
+}
+
+.nav-move {
+  position: relative;
+  margin: 30px 0 60px;
+  text-align: center;
+}

@@ -1,0 +1,154 @@
+.items {
+  width: 100%;
+  height: 100%;
+}
+
+.item-add-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.item {
+  position: relative;
+  padding: 6px 12px;
+  min-height: 40px;
+  line-height: 1.4;
+
+  &:hover .item-control-btn {
+    opacity: 1;
+    + .item-util.--show {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &:hover .item-control-btn.--invisible {
+    opacity: 0;
+  }
+
+  &-todo {
+    position: relative;
+  }
+
+  &-control-btn {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+  }
+
+  &-util {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 100;
+    margin-top: 20px;
+    padding: 10px 4px;
+    background: $primaryLightPink2;
+    border-radius: 10px;
+    // opacity: 0; // hover 아닐 땐 안 보이도록
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: -24px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px;
+      border-color: transparent $primaryLightPink2 transparent transparent;
+      pointer-events: none;
+    }
+  }
+
+  // &-util.--show {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+
+  &-edit-btn {
+    margin: 6px 0;
+  }
+}
+
+.calendar-date .item-util {
+  top: 50%;
+  left: auto;
+  right: 2px;
+  //   margin-top: 20px;
+
+  &::before {
+    top: -24px;
+    left: 14px;
+    border-width: 12px 10px;
+    border-color: transparent transparent $primaryLightPink2 transparent;
+  }
+}
+
+.item-todo {
+  &-chkbox {
+    opacity: 0;
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    width: 26px;
+    height: 26px;
+    z-index: 4;
+  }
+
+  &-chkicon {
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    width: 26px;
+    height: 26px;
+    background-image: url(../img/unchecked2.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+  }
+
+  &-chkbox:checked + .item-todo-chkicon {
+    background-image: url(../img/checked.png);
+  }
+
+  &-txt {
+    display: block;
+    padding-left: 34px;
+  }
+}
+
+.item-post {
+  &-txt {
+    position: relative;
+    padding-left: 34px;
+  }
+
+  &-txt::before {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: $primaryLightPink;
+    border-radius: 5px;
+  }
+}
+
+.dragging {
+  color: gainsboro;
+  pointer-events: none; // 드래그 할 땐
+  > .item-util {
+    display: flex;
+    flex-direction: column;
+    > .item-edit-btn,
+    .item-delete-btn {
+      display: none;
+    }
+  }
+}
