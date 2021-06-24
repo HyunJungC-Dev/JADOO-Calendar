@@ -22,52 +22,6 @@
         <button id="dropdownCalendarLabel" class="round-btn move-calendar-btn">
           년월선택
         </button>
-        <div class="dropdown dropdown-calendar">
-          <button
-            type="button"
-            id="dropdownCalendarBtn"
-            class="dropdown-toggle"
-            aria-labelledby="dropdownCalendarLabel dropdownCalendarBtn"
-            aria-haspopup="listbox"
-          >
-            <span class="selected-year">2021</span>
-            <span class="selected-month">07</span>
-          </button>
-          <div class="dropdown-menu">
-            <ul
-              class="dropdown-year"
-              tabindex="-1"
-              role="listbox"
-              aria-labelledby="dropdownCalendarLabel"
-            >
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">2018</button>
-              </li>
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">2019</button>
-              </li>
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">2020</button>
-              </li>
-            </ul>
-            <ul
-              class="dropdown-month"
-              tabindex="-1"
-              role="listbox"
-              aria-labelledby="dropdownMonthLabel"
-            >
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">05</button>
-              </li>
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">06</button>
-              </li>
-              <li class="dropdown-item" role="option">
-                <button type="button" class="dropdown-option">07</button>
-              </li>
-            </ul>
-          </div>
-        </div>
         <button class="round-btn move-today-btn">오늘</button>
       </div>
       <div id="categoryMain" class="dropdown dropdown-category">
@@ -87,73 +41,7 @@
           role="listbox"
           aria-labelledby="categoryMainLabel"
           aria-activedescendant="cateMain001"
-        >
-          <li
-            id="cateMain001"
-            role="option"
-            class="dropdown-item dropdown-option"
-            data-cate-name="✔ TODO"
-          >
-            <input
-              type="text"
-              value="✔ TODO"
-              disabled
-              class="dropdown-item-input"
-            />
-            <!-- <button class="category-edit-btn" aria-label="편집">
-              <span class="icon icon-edit-gray"></span>
-            </button> -->
-            <button class="category-delete-btn" aria-label="삭제">
-              <span class="icon icon-delete-gray"></span>
-            </button>
-            <!-- <button type="button" class="dropdown-option"></button> -->
-          </li>
-          <li
-            id="cateMain002"
-            class="dropdown-item dropdown-option"
-            role="option"
-            data-cate-name="✍ 패캠 네카라쿠배 엄청 길다면?????"
-          >
-            <input
-              type="text"
-              value="✍ 패캠 네카라쿠배 엄청 길다면?????"
-              disabled
-              class="dropdown-item-input"
-            />
-            <button class="category-delete-btn" aria-label="삭제">
-              <span class="icon icon-delete-gray"></span>
-            </button>
-          </li>
-          <li
-            id="cateMain003"
-            class="dropdown-item dropdown-option"
-            role="option"
-          >
-            <input
-              type="text"
-              value="🙏 감사일기"
-              disabled
-              class="dropdown-item-input"
-            />
-            <button class="category-delete-btn" aria-label="삭제">
-              <span class="icon icon-delete-gray"></span>
-            </button>
-          </li>
-          <li class="dropdown-item dropdown-add">
-            <label for="newCategoryMain" class="a11y-hidden"
-              >새로운 카테고리명</label
-            >
-            <input
-              type="text"
-              id="newCategoryMain"
-              class="category-add-input"
-              placeholder="카테고리명 입력"
-            />
-            <button class="category-add-btn" aria-label="추가">
-              <span class="icon icon-add-gray"></span>
-            </button>
-          </li>
-        </ul>
+        ></ul>
       </div>
     </nav>
     <main class="calendar">
@@ -166,8 +54,7 @@
         <div class="calendar-day">sat</div>
         <div class="calendar-day">sun</div>
       </div>
-      <div class="calendar-dates">
-      </div>
+      <div class="calendar-dates"></div>
     </main>
     <form class="modal modal-add">
       <fieldset>
@@ -176,74 +63,8 @@
           추가 <span class="a11y-hidden">폼</span>
         </legend>
         <input type="hidden" name="itemDate" class="modal-input-date" />
-        <div class="dropdown dropdown-category modal-input">
-          <span id="dropdownCategoryLabel2" class="modal-input-label"
-            >카테고리 <span class="a11y-hidden">선택</span></span
-          >
-          <button
-            type="button"
-            id="dropdownCategoryBtn"
-            name="itemCategory"
-            value="todolist"
-            class="dropdown-toggle"
-            aria-labelledby="dropdownCategoryLabel2 dropdownCategoryBtn"
-            aria-haspopup="listbox"
-          >
-            ✔ TODO
-          </button>
-          <ul
-            class="dropdown-menu"
-            tabindex="-1"
-            role="listbox"
-            aria-labelledby="dropdownCategoryLabel2"
-          >
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">✔ TODO</button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">
-                ✍ 패캠 네카라쿠배
-              </button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">🙏 감사일기</button>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown dropdown-category modal-input">
-          <span id="dropdownTypeLabel" class="modal-input-label"
-            >타입 <span class="a11y-hidden">선택</span></span
-          >
-          <button
-            type="button"
-            id="dropdownCategoryBtn"
-            class="dropdown-toggle"
-            name="itemType"
-            value="todo"
-            aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
-            aria-haspopup="listbox"
-          >
-            ✅ 투두리스트
-          </button>
-          <ul
-            class="dropdown-menu"
-            tabindex="-1"
-            role="listbox"
-            aria-labelledby="dropdownTypeLabel"
-          >
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">
-                ✅ 투두리스트
-              </button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">📃 글</button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">🙏 감사일기</button>
-            </li>
-          </ul>
-        </div>
+        <div class="dropdown dropdown-category modal-input"></div>
+        <div class="dropdown dropdown-type modal-input"></div>
         <div class="modal-input">
           <label for="itemContent" class="modal-input-label">내용</label>
           <textarea
@@ -263,82 +84,13 @@
     <form class="modal modal-edit">
       <fieldset>
         <legend class="modal-title">
-          
           <span class="month">10</span>월 <span class="date">30</span>일 아이템
           수정 <span class="a11y-hidden">폼</span>
         </legend>
         <input type="hidden" name="itemDate" class="modal-input-date" />
-        <input type="hidden" class="id" name="itemId"></input>
-        <div class="dropdown dropdown-category modal-input">
-          <span id="dropdownCategoryLabel2" class="modal-input-label"
-            >카테고리 <span class="a11y-hidden">선택</span></span
-          >
-          
-          <button
-            type="button"
-            id="mainCategoryBtn"
-            name="itemCategory"
-            value="todolist"
-            class="dropdown-toggle"
-            aria-labelledby="dropdownCategoryLabel2 mainCategoryBtn"
-            aria-haspopup="listbox"
-          >
-            ✔ TODO
-          </button>
-          <ul
-            class="dropdown-menu"
-            tabindex="-1"
-            role="listbox"
-            aria-labelledby="dropdownCategoryLabel2"
-          >
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">✔ TODO</button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">
-                ✍ 패캠 네카라쿠배
-              </button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">🙏 감사일기</button>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown dropdown-category modal-input">
-          <span id="dropdownTypeLabel" class="modal-input-label"
-            >타입 <span class="a11y-hidden">선택</span></span
-          >
-          <button
-            type="button"
-            id="mainCategoryBtn"
-            class="dropdown-toggle"
-            name="itemType"
-            value="todo"
-            aria-labelledby="dropdownTypeLabel dropdownCategoryBtn"
-
-            aria-haspopup="listbox"
-          >
-            ✅ 투두리스트
-          </button>
-          <ul
-            class="dropdown-menu"
-            tabindex="-1"
-            role="listbox"
-            aria-labelledby="dropdownTypeLabel"
-          >
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">
-                ✅ 투두리스트
-              </button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">📃 글</button>
-            </li>
-            <li class="dropdown-item" role="option">
-              <button type="button" class="dropdown-option">🙏 감사일기</button>
-            </li>
-          </ul>
-        </div>
+        <input type="hidden" name="itemId" class="modal-input-id" />
+        <div class="dropdown dropdown-category modal-input"></div>
+        <div class="dropdown dropdown-type modal-input"></div>
         <div class="modal-input">
           <label for="itemContent" class="modal-input-label">내용</label>
           <textarea

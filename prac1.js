@@ -1,6 +1,6 @@
 /**
  * 달력 관련 소스코드
- * 
+ *
  */
 const dayTranslate = day => day === 0 ? 6 : day - 1;
 
@@ -20,7 +20,7 @@ const convertDateToString = (year, month, date) =>{
     return newYear+'-'+newMonth+'-'+newDate
 }
 
-const currentCategory = '네카';
+const currentCategory = '1';
 
 // 클로저
 const calendar = (() =>{
@@ -68,41 +68,56 @@ const calendar = (() =>{
             <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth} 월 ${lastMonthDate-i}일 아이템 추가"><span class="icon icon-add"></span></button>
             <ul class="items">
             ${data
-                .filter(item => item.category === currentCategory)
-                // eslint-disable-next-line no-loop-func
-                .filter(item => item.date === convertDateToString(currentYear, currentMonth, i))
-                // eslint-disable-next-line no-loop-func
-                .reduce((acc, item) => {
-                    acc += item.type === 'todo' ? 
-                        `
+              .filter(item => item.category === currentCategory)
+              // eslint-disable-next-line no-loop-func
+              .filter(
+                item =>
+                  item.date ===
+                  convertDateToString(currentYear, currentMonth, i)
+              )
+              // eslint-disable-next-line no-loop-func
+              .reduce((acc, item) => {
+                acc +=
+                  item.type === '1'
+                    ? `
                         <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
-                                id="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}"
+                                id="item-${convertDateToString(
+                                  currentYear,
+                                  currentMonth,
+                                  i
+                                )}-${item.id}"
                             />
                             <span class="item-todo-chkicon"></span>
-                            <label class="item-todo-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                            <label for="item-${convertDateToString(
+                              currentYear,
+                              currentMonth,
+                              i
+                            )}-${item.id}" class="item-todo-txt" >
                                 ${item.content}
                             </label>
                             ${itemControllerInHTML()}
                         </li>`
-                    :
-                    `
+                    : `
                     <li class="item item-todo data-id=${item.id}">
-                        <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                        <p class="item-post-txt" id="item-${convertDateToString(
+                          currentYear,
+                          currentMonth,
+                          i
+                        )}-${item.id}">
                             ${item.content}
                         </p>
                       ${itemControllerInHTML()}
 
                     </li>
-                  `
-                  return acc;
-                }, [])}
+                  `;
+                return acc;
+              }, [])}
         </ul>
             </div>
         `;
-
     }
     // current month
     
@@ -114,39 +129,55 @@ const calendar = (() =>{
         <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth} 월 ${i}일 아이템 추가"><span class="icon icon-add"></span></button>
         <ul class="items">
             ${data
-                .filter(item => item.category === currentCategory)
-                // eslint-disable-next-line no-loop-func
-                .filter(item => item.date === convertDateToString(currentYear, currentMonth, i))
-                // eslint-disable-next-line no-loop-func
-                .reduce((acc, item) => {
-                    acc += item.type === 'todo' ? 
-                        `
+              .filter(item => item.category === currentCategory)
+              // eslint-disable-next-line no-loop-func
+              .filter(
+                item =>
+                  item.date ===
+                  convertDateToString(currentYear, currentMonth, i)
+              )
+              // eslint-disable-next-line no-loop-func
+              .reduce((acc, item) => {
+                acc +=
+                  item.type === '1'
+                    ? `
                         <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
-                                id="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}"
+                                id="item-${convertDateToString(
+                                  currentYear,
+                                  currentMonth,
+                                  i
+                                )}-${item.id}"
                             />
                             <span class="item-todo-chkicon"></span>
-                            <label class="item-todo-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                            <label for="item-${convertDateToString(
+                              currentYear,
+                              currentMonth,
+                              i
+                            )}-${item.id}" class="item-todo-txt" >
                                 ${item.content}
                             </label>
                           ${itemControllerInHTML()}
                         </li>`
-                    :
-                    `
+                    : `
                     <li class="item item-todo" data-id=${item.id}>
-                        <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                        <p class="item-post-txt" id="item-${convertDateToString(
+                          currentYear,
+                          currentMonth,
+                          i
+                        )}-${item.id}">
                             ${item.content}
                         </p>
                         ${itemControllerInHTML()}
                     </li>
-                  `
-                  return acc;
-                }, [])}
+                  `;
+                return acc;
+              }, [])}
         </ul>
-        </div>`
-    }   
+        </div>`;
+    }
     // next month
     for(let i = 1; i <= 6-lastDay; i += 1){ 
         temp += 
@@ -156,40 +187,55 @@ const calendar = (() =>{
         <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth+1} 월 ${i}일 아이템 추가"><span class="icon icon-add"></span></button>
         <ul class="items">
             ${data
-                .filter(item => item.category === currentCategory)
-                // eslint-disable-next-line no-loop-func
-                .filter(item => item.date === convertDateToString(currentYear, currentMonth, i))
-                // eslint-disable-next-line no-loop-func
-                .reduce((acc, item) => {
-                    acc += item.type === 'todo' ? 
-                        `
+              .filter(item => item.category === currentCategory)
+              // eslint-disable-next-line no-loop-func
+              .filter(
+                item =>
+                  item.date ===
+                  convertDateToString(currentYear, currentMonth, i)
+              )
+              // eslint-disable-next-line no-loop-func
+              .reduce((acc, item) => {
+                acc +=
+                  item.type === '1'
+                    ? `
                         <li class="item item-todo" data-id=${item.id}>
                             <input
                                 class="item-todo-chkbox"
                                 type="checkbox"
-                                id="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}"
+                                id="item-${convertDateToString(
+                                  currentYear,
+                                  currentMonth,
+                                  i
+                                )}-${item.id}"
                             />
                             <span class="item-todo-chkicon"></span>
-                            <label class="item-todo-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                            <label for="item-${convertDateToString(
+                              currentYear,
+                              currentMonth,
+                              i
+                            )}-${item.id} class="item-todo-txt" ">
                                 ${item.content}
                             </label>
                             ${itemControllerInHTML()}
                         </li>`
-                    :
-                    `
+                    : `
                     <li class="item item-todo" data-id=${item.id}>
-                        <p class="item-post-txt" for="item-${convertDateToString(currentYear, currentMonth, i)}-${item.id}">
+                        <p class="item-post-txt" id="item-${convertDateToString(
+                          currentYear,
+                          currentMonth,
+                          i
+                        )}-${item.id}">
                             ${item.content}
                         </p>
                         ${itemControllerInHTML()}
                     </li>
-                  `
-                  return acc;
-                }, [])}
+                  `;
+                return acc;
+              }, [])}
         </ul>
         </div>
         `;
-        
     }
     $calendarGrid.innerHTML = temp;
   }
@@ -291,19 +337,15 @@ const calendar = (() =>{
       firstMonth -= 1
       firstYear = firstMonth < 1 ? firstYear - 1 : firstYear;
       firstMonth = firstMonth < 1 ? 12 : firstMonth;
-      console.log(firstMonth);
-
       const {firstDay, lastDate, lastDay, lastMonthDate} = getCustomDate(firstYear, firstMonth);
       let temp = '';
-      console.log(firstDay);
 
       for(let i = firstDay-1; i >= 0; i -= 1)
       {
-        console.log("tq")
           temp += 
           `
           <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(firstYear, firstMonth-1, lastMonthDate - i)}>
-          <span class="calendar-date-txt"> ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i} ${ lastMonthDate-i % 7 === 0 ? `<span class="hidden">${firstYear}</span><span class="hidden">${firstMonth}</span>`:''}
+          <span class="calendar-date-txt"> ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i} ${ lastMonthDate-i % 7 === 0 ? `<span class="--hide">${firstYear}</span><span class="--hide">${firstMonth}</span>`:''}
           </span>
           <button class="item-add-btn" aria-label="${firstYear}년 ${firstMonth} 월 ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i}일 아이템 추가"><span class="icon icon-add"></span></button>
           <ul class="items">
@@ -341,11 +383,10 @@ const calendar = (() =>{
           </div>`;
       }
       for(let i = 1; i <= lastDate - (lastDay === 6 ? -1 : lastDay)-1; i += 1){
-            console.log(lastDay+"라스트데이");
           temp += `
           <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(firstYear, firstMonth, i)}>
           <span class="calendar-date-txt">  ${i === 1 ? firstMonth +'.' + i : i}
-          ${ i % 7 === 0 ? `<span class="hidden">${firstYear}</span><span class="hidden">${firstMonth}</span>`:''}</span>
+          ${ i % 7 === 0 ? `<span class="--hide">${firstYear}</span><span class="--hide">${firstMonth}</span>`:''}</span>
           </span>
           <button class="item-add-btn" aria-label="${firstYear}년 ${firstMonth} 월 ${i === 1 ? firstMonth +'.' + i : i}일 아이템 추가"><span class="icon icon-add"></span></button>
           <ul class="items">
@@ -416,7 +457,6 @@ const calendar = (() =>{
         });
     },
     returnInitIO : new IntersectionObserver(entries =>{
-
         entries.forEach(entry => {
             // 기준 점의 날짜를 가져와서 lastDate - 기준 날짜 
             // firstDate + 기준 날짜
@@ -426,12 +466,7 @@ const calendar = (() =>{
                     [$calendarYear.textContent, $calendarMonth.textContent, ] = entry.target.dataset.date.split('-');
                     const { firstDate, lastDate } = getCustomDate(+$calendarYear.textContent, +$calendarMonth.textContent);
                     const [,,standardDate] = entry.target.dataset.date.split('-'); 
-
                     let node = entry.target;
-                    // console.log(standardDate);
-                    // console.log(firstDate);
-                    // console.log(lastDate);
-
                     for(let date = 1; date < firstDate + (+standardDate); date += 1){
                         node.classList.remove('unactive');
                         const nextNode = node;
@@ -480,12 +515,15 @@ const calendar = (() =>{
                 io.observe($standard);
             })
         }
-        if ($calendar.scrollHeight - Math.ceil($calendar.scrollTop) <= $calendar.clientHeight) {
-            changeNextMonth();
-            const $standards = document.querySelectorAll('.standard');
-            [...$standards].forEach($standard => {
-                io.observe($standard);
-            })
+        if (
+          $calendar.scrollHeight - Math.ceil($calendar.scrollTop) <=
+          $calendar.clientHeight
+        ) {
+          changeNextMonth();
+          const $standards = document.querySelectorAll('.standard');
+          [...$standards].forEach($standard => {
+            io.observe($standard);
+          });
         }
     }, 500);
   }
@@ -506,67 +544,74 @@ $todayBtn.addEventListener('click', () => calendar.changeToToday(todayPosition))
 
 /**
  * 모달 창 관련 소스 코드
- * 
+ *
  */
 
-const addDataArray = (itemDate, itemCategory, itemType, itemContent) =>{
-    data = [...data, 
-        {
-            id: data[data.length - 1].id + 1, 
-            type: itemType,
-            category: itemCategory,
-            date : itemDate,
-            content: itemContent,
-            order: data.filter(item => item.date === itemDate).length+1
-        }
-    ]
-}
-
-const addDataDomTree = (itemDate, itemCategory, itemType, itemContent) =>{
-    const dates = [...document.querySelector('.calendar-dates').children];
-    const $date = dates.find(item => item.dataset.date === itemDate);
-    const innerDate = itemType === 'todo' ? 
-                `<li class="item item-todo">
-                    <input
-                        class="item-todo-chkbox"
-                        type="checkbox"
-                        id="item-${itemDate}-${data.length}"
-                    />
-                    <span class="item-todo-chkicon"></span>
-                    <label class="item-todo-txt" for="item-${itemDate}-${data.length}">
-                        ${itemContent}
-                    </label>
-                    ${calendar.getItemControllerInHTML()}
-                </li>`
-            :
-            `
-            <li class="item item-todo">
-                <p class="item-post-txt" for="item-${itemDate}-${data.length}">
-                    ${itemContent}
-                </p>
-                ${calendar.getItemControllerInHTML()}
-            </li>`
-        $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
+const addDataArray = ({ date, category, type, content }) => {
+  data = [
+    ...data,
+    {
+      id: nextDataId,
+      type,
+      category,
+      date,
+      content,
+      order: data.filter(item => item.date === date).length + 1
     }
+  ];
+};
 
-const deleteDataArray = itemId =>{
+const addDataDomTree = ({ date, type, content }) => {
+  const dates = [...document.querySelector('.calendar-dates').children];
+  const $date = dates.find(item => item.dataset.date === date);
+
+  const innerDate =
+    type === '1'
+      ? `<li class="item item-todo" data-id=${nextDataId}>
+            <input
+                class="item-todo-chkbox"
+                type="checkbox"
+                id="item-${date}-${nextDataId}"
+            />
+            <span class="item-todo-chkicon"></span>
+            <label for="item-${date}-${nextDataId}" class="item-todo-txt" >
+                ${content}
+            </label>
+            ${calendar.getItemControllerInHTML()}
+        </li>`
+      : `
+        <li class="item item-todo" data-id=${nextDataId}>
+            <p class="item-post-txt" id="item-${date}-${nextDataId}">
+                ${content}
+            </p>
+            ${calendar.getItemControllerInHTML()}
+        </li>`;
+
+  $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
+};
+
+const deleteDataArray = itemId => {
   data = data.filter(item => item.id !== itemId);
-}
-const deleteDataDOM = (itemId, $parentNode) =>{
-  const $nodeWillDeleted = [...$parentNode.children].find(item => item.dataset.id === itemId);
-  $parentNode.removeChild($nodeWillDeleted);
-}
-const modifyDataArray = (itemId, itemDate, itemCategory, itemType, itemContent) =>{
-  const modifiedData = data.filter(item => item.id === itemId);
-  modifiedData.date = itemDate;
-  modifiedData.category = itemCategory;
-  modifiedData.type = itemType;
-  modifiedData.content = itemContent;
-  data = {modifiedData, ...data};
+};
 
-} 
-const modifyDataDOM = (itemId, itemDate, itemCategory, itemType, itemContent) =>{
-  const nodeWillModifieds = document.querySelectorAll('.item');
-  const nodeWillModified = [...nodeWillModifieds].find(item => item.dataset.id === itemId);
-  nodeWillModified.querySelector('label').textContent = itemContent;
-}
+const deleteDataDOM = (itemId, $parentNode) => {
+  const $nodeWillDeleted = [...$parentNode.children].find(
+    item => item.dataset.id === itemId
+  );
+  $parentNode.removeChild($nodeWillDeleted);
+};
+
+const modifyDataArray = ({ id, content }) => {
+  const modifiedData = data.filter(item => item.id === id);
+  modifiedData.content = content;
+};
+
+const modifyDataDOM = ({ id, date, type, content }) => {
+  const $modifyItem = document.getElementById(`item-${date}-${id}`);
+
+  if (type === '1') {
+    $modifyItem.nextElementSibling.nextElementSibling.textContent = content;
+  } else {
+    $modifyItem.textContent = content;
+  }
+};
