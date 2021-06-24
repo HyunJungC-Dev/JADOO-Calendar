@@ -27,5 +27,3 @@ $ git flow feature start <branch name>
 ```
 $ git flow feature finish <branch name>
 ```
-
-## 코딩 컨벤션
