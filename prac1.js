@@ -63,8 +63,8 @@ const calendar = (() =>{
     for(let i = firstDay-1; i >= 0; i -= 1)
     {
         temp +=  `
-            <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(currentYear, currentMonth-1, i)}>
-            <span class="calendar-date-txt unactive">${lastMonthDate-i}</span>
+            <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(currentYear, currentMonth-1, i)}>
+            <span class="calendar-date-txt">${lastMonthDate-i}</span>
             <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth} 월 ${lastMonthDate-i}일 아이템 추가"><span class="icon icon-add"></span></button>
             <ul class="items">
             ${data
@@ -151,8 +151,8 @@ const calendar = (() =>{
     for(let i = 1; i <= 6-lastDay; i += 1){ 
         temp += 
         `
-        <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(currentYear, currentMonth+1, i)}>
-        <span class="calendar-date-txt unactive">${i === 1 ? currentMonth + 1 + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${currentMonth+1 > 12 ? currentYear + 1 : currentYear}</span><span class="--hide">${currentMonth+1 > 12 ? 1 : currentMonth + 1}</span>`:''}</span></span>
+        <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(currentYear, currentMonth+1, i)}>
+        <span class="calendar-date-txt">${i === 1 ? currentMonth + 1 + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${currentMonth+1 > 12 ? currentYear + 1 : currentYear}</span><span class="--hide">${currentMonth+1 > 12 ? 1 : currentMonth + 1}</span>`:''}</span></span>
         <button class="item-add-btn" aria-label="${currentYear}년 ${currentMonth+1} 월 ${i}일 아이템 추가"><span class="icon icon-add"></span></button>
         <ul class="items">
             ${data
@@ -202,8 +202,8 @@ const calendar = (() =>{
 
       for(let i = 8-firstDay === 8 ? 1 : 8-firstDay; i <= lastDate; i += 1){
           temp += `
-          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(lastYear, lastMonth, i)}>
-          <span class="calendar-date-txt unactive"> ${i === 1 ? lastMonth + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${lastYear}</span><span class="--hide">${lastMonth}</span>`:''}</span>
+          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(lastYear, lastMonth, i)}>
+          <span class="calendar-date-txt"> ${i === 1 ? lastMonth + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${lastYear}</span><span class="--hide">${lastMonth}</span>`:''}</span>
           <button class="item-add-btn" aria-label="${lastYear}년 ${lastMonth} 월 ${i === 1 ? lastMonth + ',' + i : i}일 아이템 추가"><span class="icon icon-add"></span></button>
           <ul class="items">
               ${data
@@ -244,8 +244,8 @@ const calendar = (() =>{
       // next month
       for(let i = 1; i <= 6-lastDay; i += 1){
           temp += `
-          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(lastYear, lastMonth+1, i)}>
-          <span class="calendar-date-txt unactive"> ${i === 1 ? (lastMonth >= 12 ? 0 : lastMonth) + 1 + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${lastMonth+1 > 12 ? lastYear + 1 : lastYear}</span><span class="--hide">${lastMonth+1 > 12 ? 1 : lastMonth + 1}</span>`:''}</span>
+          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(lastYear, lastMonth+1, i)}>
+          <span class="calendar-date-txt"> ${i === 1 ? (lastMonth >= 12 ? 0 : lastMonth) + 1 + '. ' + i : i} ${i % 7 === 0 ? `<span class="--hide">${lastMonth+1 > 12 ? lastYear + 1 : lastYear}</span><span class="--hide">${lastMonth+1 > 12 ? 1 : lastMonth + 1}</span>`:''}</span>
           </span>
           <button class="item-add-btn" aria-label="${lastYear}년 ${lastMonth+1} 월 ${i === 1 ? (lastMonth >= 12 ? 0 : lastMonth) + 1 + '. ' + i : i}일 아이템 추가"><span class="icon icon-add"></span></button>
           <ul class="items">
@@ -291,14 +291,19 @@ const calendar = (() =>{
       firstMonth -= 1
       firstYear = firstMonth < 1 ? firstYear - 1 : firstYear;
       firstMonth = firstMonth < 1 ? 12 : firstMonth;
+      console.log(firstMonth);
+
       const {firstDay, lastDate, lastDay, lastMonthDate} = getCustomDate(firstYear, firstMonth);
       let temp = '';
+      console.log(firstDay);
+
       for(let i = firstDay-1; i >= 0; i -= 1)
       {
+        console.log("tq")
           temp += 
           `
-          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(firstYear, firstMonth-1, lastMonthDate - i)}>
-          <span class="calendar-date-txt unactive"> ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i} ${ lastMonthDate-i % 7 === 0 ? `<span class="hidden">${firstYear}</span><span class="hidden">${firstMonth}</span>`:''}
+          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(firstYear, firstMonth-1, lastMonthDate - i)}>
+          <span class="calendar-date-txt"> ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i} ${ lastMonthDate-i % 7 === 0 ? `<span class="hidden">${firstYear}</span><span class="hidden">${firstMonth}</span>`:''}
           </span>
           <button class="item-add-btn" aria-label="${firstYear}년 ${firstMonth} 월 ${lastMonthDate-i === 1 ? firstMonth + '.'+ lastMonthDate - i : lastMonthDate - i}일 아이템 추가"><span class="icon icon-add"></span></button>
           <ul class="items">
@@ -335,10 +340,11 @@ const calendar = (() =>{
           </ul>
           </div>`;
       }
-      for(let i = 1; i <= lastDate - (lastDay === 6 ? 0 : lastDay) -1; i += 1){
+      for(let i = 1; i <= lastDate - (lastDay === 6 ? -1 : lastDay)-1; i += 1){
+            console.log(lastDay+"라스트데이");
           temp += `
-          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''}" data-date=${convertDateToString(firstYear, firstMonth, i)}>
-          <span class="calendar-date-txt unactive">  ${i === 1 ? firstMonth +'.' + i : i}
+          <div class="calendar-date ${ i % 7 === 0 ? 'standard' : ''} unactive" data-date=${convertDateToString(firstYear, firstMonth, i)}>
+          <span class="calendar-date-txt">  ${i === 1 ? firstMonth +'.' + i : i}
           ${ i % 7 === 0 ? `<span class="hidden">${firstYear}</span><span class="hidden">${firstMonth}</span>`:''}</span>
           </span>
           <button class="item-add-btn" aria-label="${firstYear}년 ${firstMonth} 월 ${i === 1 ? firstMonth +'.' + i : i}일 아이템 추가"><span class="icon icon-add"></span></button>
@@ -410,34 +416,40 @@ const calendar = (() =>{
         });
     },
     returnInitIO : new IntersectionObserver(entries =>{
-            entries.forEach(entry => {
+
+        entries.forEach(entry => {
+            // 기준 점의 날짜를 가져와서 lastDate - 기준 날짜 
+            // firstDate + 기준 날짜
                 if(entry.isIntersecting){
+                    const allUnActiveElements = document.querySelectorAll('.calendar-date');
+                    allUnActiveElements.forEach(item => item.classList.add('unactive'));        
                     [$calendarYear.textContent, $calendarMonth.textContent, ] = entry.target.dataset.date.split('-');
                     const { firstDate, lastDate } = getCustomDate(+$calendarYear.textContent, +$calendarMonth.textContent);
-                    console.log(firstDate);
-                    console.log(lastDate);
-                    // const {lastDate} = getCustomDate(+entry.target.children[0].children[0].textContent, + entry.target.children[0].children[1].textContent);
-                    // let node = entry.target.children[0];
-                    // for(let date = 0; date < lastDate; date += 1){
-                    //     node.classList.remove('unactive');
-                    //     const nextNode = node;
-                    //     [node] = nextNode.parentElement.nextElementSibling.children;
-                    // }
-                
+                    const [,,standardDate] = entry.target.dataset.date.split('-'); 
+
+                    let node = entry.target;
+                    // console.log(standardDate);
+                    // console.log(firstDate);
+                    // console.log(lastDate);
+
+                    for(let date = 1; date < firstDate + (+standardDate); date += 1){
+                        node.classList.remove('unactive');
+                        const nextNode = node;
+                        node = nextNode.previousElementSibling;
+                    }
+                    node = entry.target;
+
+                    for(let date = 0; date < lastDate - (+standardDate)+1; date += 1){
+                        node.classList.remove('unactive');
+                        const nextNode = node;
+                        node = nextNode.nextElementSibling;
+                    }
                 }
-                // else{
-                //     const {lastDate} = getCustomDate(+entry.target.children[0].children[0].textContent, +entry.target.children[0].children[1].textContent);
-                //     let node = entry.target.children[0];
-                //     for(let date = 0; date < lastDate; date += 1){
-                //         node.classList.add('unactive');
-                //         const nextNode = node;
-                //         [node] = nextNode.parentElement.nextElementSibling.children;
-                //     }
-                //   }
+
             } );
           }, {
               root:$calendar,
-              rootMargin: '0% 0px -80% 0px'
+              rootMargin: '-49% 0px -49% 0px'
           }),
     getCalendarElement: () => $calendar,
     getInitCalendar : initCalendar,

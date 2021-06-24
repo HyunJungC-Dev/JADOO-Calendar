@@ -1,13 +1,13 @@
 .unactive{
-  color:gray !important;
-  // background-color: gray;
+  background-color: #ccc;
+  opacity: 0.5;
 }
 .standard{
-  background-color: gray;
+  // background-color: gray;
 }
 .calendar {
   max-height: 100vh;
-  overflow-y: auto;
+  overflow-y: auto; 
   padding: 60px 0 0 20px;
   width: calc(100% - 260px);
 // .unactive{
