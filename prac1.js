@@ -37,7 +37,17 @@ const calendar = (() =>{
   let lastYear = currentYear; 
   let firstMonth = currentMonth; // 렌더링 된 가장 첫번째 년
   let lastMonth = currentMonth; 
-
+  let newCurMonth = currentMonth;
+  let newCurYear = currentYear;
+  let $lastStandard = '';
+  const setCurrentYearMonth = (year, month) =>{
+    newCurYear = +year;
+    newCurMonth = +month;
+    firstYear = newCurYear; // 렌더링 된 가장 마지막 년
+    lastYear = newCurYear; 
+    firstMonth = newCurMonth; // 렌더링 된 가장 첫번째 년
+    lastMonth = newCurMonth; 
+  }
   const itemControllerInHTML = () => `
     <button class="item-control-btn" aria-label="아이템컨트롤러">
       <span class="icon icon-control"></span>
@@ -444,7 +454,7 @@ const calendar = (() =>{
       changeNextMonth();
       changePrevMonth();
       $calendarYear.textContent = year+"";
-      $calendarMonth.textContent = month+"";
+      $calendarMonth.textContent = month < 10 ? '0'+month : ''+month;
     },
     observe: io =>{
         throttling.throttle(() =>{
@@ -463,6 +473,8 @@ const calendar = (() =>{
                     allUnActiveElements.forEach(item => item.classList.add('unactive'));        
                     [$calendarYear.textContent, $calendarMonth.textContent, ] = entry.target.dataset.date.split('-');
                     const { firstDate, lastDate } = getCustomDate(+$calendarYear.textContent, +$calendarMonth.textContent);
+                    $lastStandard = entry.target;
+                    setCurrentYearMonth($calendarYear.textContent, $calendarMonth.textContent);
                     const [,,standardDate] = entry.target.dataset.date.split('-'); 
                     let node = entry.target;
                     for(let date = 1; date < firstDate + (+standardDate); date += 1){
@@ -489,6 +501,29 @@ const calendar = (() =>{
     getChangeNextMonth : changeNextMonth,
     getItemControllerInHTML : itemControllerInHTML,
     getChangePrevMonth : changePrevMonth,
+    setDateReset: () =>{
+      currentMonth = month; 
+      currentYear = year;
+      firstYear = currentYear; // 렌더링 된 가장 마지막 년
+      lastYear = currentYear; 
+      firstMonth = currentMonth; // 렌더링 된 가장 첫번째 년
+      lastMonth = currentMonth; 
+    },
+    renderCalendarDateWithSavedDate : () =>{
+      currentYear = +newCurYear;
+      currentMonth = +newCurMonth;
+      firstYear = currentYear; // 렌더링 된 가장 마지막 년
+      lastYear = currentYear; 
+      firstMonth = currentMonth; // 렌더링 된 가장 첫번째 년
+      lastMonth = currentMonth; 
+      initCalendar();
+      changeNextMonth();
+      changePrevMonth();
+
+      $calendar.scrollTo(0, $lastStandard.getBoundingClientRect().top+ ($calendar.clientHeight));
+      $calendarYear.textContent = currentYear+"";
+      $calendarMonth.textContent = currentMonth < 10 ? '0'+currentMonth : ''+currentMonth;
+    },
     changeToToday : todayPosition => {
       currentYear = year;
       currentMonth = month;
@@ -499,9 +534,10 @@ const calendar = (() =>{
       initCalendar();
       changeNextMonth();
       changePrevMonth();
+      $lastStandard = document.querySelector('.today'); 
       $calendar.scrollTo(0, todayPosition.top - ($calendar.clientHeight / 2));
       $calendarYear.textContent = year+"";
-      $calendarMonth.textContent = month+"";
+      $calendarMonth.textContent = month < 10 ? '0'+month : ''+month;
     },
     scroll: io =>{
       throttling.throttle(()=>{
@@ -515,7 +551,7 @@ const calendar = (() =>{
         }
         if (
           $calendar.scrollHeight - Math.ceil($calendar.scrollTop) <=
-          $calendar.clientHeight
+          $calendar.clientHeight-1
         ) {
           changeNextMonth();
           const $standards = document.querySelectorAll('.standard');
@@ -658,6 +694,7 @@ document
       dropdownCategoryMain.close();
 
       currentCategory = $dropdownOption.dataset.cateId;
-      calendar.renderCalendar();
+      calendar.renderCalendarDateWithSavedDate();
+
     }
   });
