@@ -1303,11 +1303,12 @@ const addDataArray = ({ date, category, type, content }) => {
   ];
 };
 
-const addDataDomTree = ({ date, type, content }) => {
+const addDataDomTree = ({ date, type, content, category }) => {
   const dates = [...document.querySelector('.calendar-dates').children];
   const $date = dates.find(item => item.dataset.date === date);
 
   const innerDate =
+  
     type === '1'
       ? `<li class="item item-todo" data-id=${nextDataId}>
              <input
@@ -1329,7 +1330,12 @@ const addDataDomTree = ({ date, type, content }) => {
              ${calendar.getItemControllerInHTML()}
          </li>`;
 
-  $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
+  if(category === currentCategory) $date.lastElementChild.insertAdjacentHTML('beforeend', innerDate);
+  else{
+    currentCategory = category;
+    calendar.renderCalendarDateWithSavedDate();
+
+  } 
 };
 
 const deleteDataArray = itemId => {
