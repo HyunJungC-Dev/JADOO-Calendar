@@ -4,13 +4,13 @@
  */
 const dayTranslate = day => day === 0 ? 6 : day - 1;
 
-const getCustomDate = (year, month) =>{
-    const firstDay = dayTranslate(new Date(year, month-1).getDay());
-    const firstDate = new Date(year, month-1, 1).getDate();
-    const lastDate = new Date(year, month, 0).getDate();
-    const lastDay = dayTranslate(new Date(year, month, 0).getDay());
-    const lastMonthDate = new Date(year, month-1, 0).getDate();
-    return {firstDate, firstDay, lastDate, lastDay, lastMonthDate};
+const getCustomDate = (year, month) => {
+  const firstDay = dayTranslate(new Date(year, month - 1).getDay());
+  const firstDate = new Date(year, month - 1, 1).getDate();
+  const lastDate = new Date(year, month, 0).getDate();
+  const lastDay = dayTranslate(new Date(year, month, 0).getDay());
+  const lastMonthDate = new Date(year, month - 1, 0).getDate();
+  return { firstDate, firstDay, lastDate, lastDay, lastMonthDate };
 };
 
 const convertDateToString = (year, month, date) =>{
@@ -590,7 +590,9 @@ const addDataArray = ({ date, category, type, content }) => {
       category,
       date,
       content,
-      order: data.filter(item => item.date === date).length + 1
+      order:
+        data.filter(item => item.date === date && item.category === category)
+          .length + 1
     }
   ];
 };
@@ -635,9 +637,11 @@ const deleteDataDOM = (itemId, $parentNode) => {
   $parentNode.removeChild($nodeWillDeleted);
 };
 
-const modifyDataArray = ({ id, content }) => {
+const modifyDataArray = ({ id, date, content, order }) => {
   const modifiedData = data.filter(item => item.id === +id)[0];
-  modifiedData.content = content;
+  if (date) modifiedData.date = date;
+  if (content) modifiedData.content = content;
+  if (order) modifiedData.order = order;
 };
 
 const modifyDataDOM = ({ id, date, type, content }) => {

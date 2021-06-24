@@ -146,8 +146,12 @@
 }
 
 .dragging {
-  color: gainsboro;
-  pointer-events: none; // 드래그 할 땐
+  background-color: $primaryLightPink;
+  color: #181818;
+  opacity: 0.5;
+  z-index: 1;
+  border-radius: 20px;
+  pointer-events: none;
   > .item-util {
     display: flex;
     flex-direction: column;
