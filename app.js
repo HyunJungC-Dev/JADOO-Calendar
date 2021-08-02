@@ -790,7 +790,7 @@ const calendar = (() => {
         dateObj.todayYear,
         dateObj.todayMonth - 1,
         lastMonthDate - i,
-        year === dateObj.todayYear && month === dateObj.todayMonth && date === i
+        false
       );
     }
     // 현재 달 날짜 렌더링
@@ -808,7 +808,7 @@ const calendar = (() => {
         dateObj.todayMonth + 1 > 12 ? dateObj.todayYear + 1 : dateObj.todayYear,
         dateObj.todayMonth + 1 > 12 ? 1 : dateObj.todayMonth + 1,
         i,
-        year === dateObj.todayYear && month === dateObj.todayMonth && date === i
+        false
       );
     }
     $calendarGrid.innerHTML = newDateInHTML;
